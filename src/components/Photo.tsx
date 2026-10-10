@@ -1,5 +1,6 @@
 import { photos, type PhotoName } from '../data/config';
 
+const THUMB_WIDTH = 200;
 const SMALL_WIDTH = 640;
 
 export function Photo({ name, alt, sizes = '100vw', eager = false, className }: {
@@ -14,7 +15,7 @@ export function Photo({ name, alt, sizes = '100vw', eager = false, className }: 
   return (
     <img
       src={`/images/${name}-lg.webp`}
-      srcSet={`/images/${name}-sm.webp ${SMALL_WIDTH}w, /images/${name}-lg.webp ${width}w`}
+      srcSet={`/images/${name}-xs.webp ${THUMB_WIDTH}w, /images/${name}-sm.webp ${SMALL_WIDTH}w, /images/${name}-lg.webp ${width}w`}
       sizes={sizes}
       width={width}
       height={height}

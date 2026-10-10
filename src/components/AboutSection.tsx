@@ -1,9 +1,7 @@
+import { ArrowRight } from 'lucide-react';
 import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
-
-// The three pours of the Ethiopian coffee ceremony
-const numerals = ['I', 'II', 'III'];
 
 export function AboutSection() {
   const { s } = useLang();
@@ -28,34 +26,21 @@ export function AboutSection() {
         </Reveal>
 
         {/* Text Content */}
-        <div className="lg:col-span-6 lg:col-start-7 lg:pt-6">
+        <div className="lg:col-span-6 lg:col-start-7 lg:self-center">
           <Reveal>
             <p className="eyebrow mb-5 text-gold">{s.about.eyebrow}</p>
             <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
               {s.about.heading.before} <em className="text-gold">{s.about.heading.accent}</em>
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">{s.about.body}</p>
+            <a
+              href="#menu"
+              className="group mt-10 inline-flex items-center gap-3 border-b border-gold pb-1.5 text-sm font-medium text-cream transition-colors hover:text-gold"
+            >
+              {s.hero.primaryCta}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="eyebrow mt-14 mb-2 text-sand">{s.about.cupsLabel}</p>
-          </Reveal>
-          <ol>
-            {s.about.cups.map((cup, i) => (
-              <li key={cup.name}>
-                <Reveal delay={0.1 + i * 0.1} className="grid grid-cols-[3rem_1fr] gap-x-4 border-t border-cream/15 py-6 md:grid-cols-[4rem_10rem_1fr]">
-                  <span className="font-display text-2xl italic text-gold">{numerals[i]}</span>
-                  <div>
-                    <h3 className="font-display text-2xl">{cup.name}</h3>
-                    <p className="mt-1 text-xs text-sand">{cup.meaning}</p>
-                  </div>
-                  <p className="col-start-2 mt-3 text-sm leading-relaxed text-cream/70 md:col-start-3 md:mt-1">
-                    {cup.description}
-                  </p>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
     </section>

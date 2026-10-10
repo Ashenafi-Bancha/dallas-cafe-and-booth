@@ -52,13 +52,6 @@ export function FeaturedMenu() {
           <div className="space-y-16 lg:col-span-6 lg:col-start-7">
             {siteConfig.menu.map((category, i) => (
               <Reveal key={category.category.en}>
-                <div className="mb-6 aspect-[16/10] overflow-hidden lg:hidden">
-                  <Photo
-                    name={category.items[0].photo}
-                    alt={t(category.category)}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
                 <div className="flex items-baseline gap-4 border-b border-ink pb-4">
                   <span className="text-xs font-medium text-clay">0{i + 1}</span>
                   <h3 className="font-display text-3xl italic md:text-4xl">{t(category.category)}</h3>
@@ -68,21 +61,31 @@ export function FeaturedMenu() {
                     <li
                       key={item.name.en}
                       onMouseEnter={() => setActiveItem(item)}
-                      className="group border-b border-ink/15 py-5"
+                      className="group flex items-center gap-4 border-b border-ink/15 py-4 md:gap-5"
                     >
-                      <div className="flex items-baseline">
-                        <h4 className="font-display text-xl transition-colors group-hover:text-clay md:text-2xl">{t(item.name)}</h4>
-                        <span className="mx-3 flex-1 -translate-y-1 border-b border-dotted border-ink/35" />
-                        <p className="font-display text-xl md:text-2xl">
-                          {item.price}
-                          <span className="ml-1.5 font-sans text-[10px] font-medium tracking-widest text-ink/50">
-                            {t(siteConfig.currency)}
-                          </span>
-                        </p>
+                      <div className="h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden bg-ink/10 md:h-20 md:w-20">
+                        <Photo
+                          name={item.photo}
+                          alt=""
+                          sizes="80px"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
                       </div>
-                      {/* The name in the other language, so the menu reads in both */}
-                      <p lang={other} className="mt-1 text-sm font-medium text-clay">{item.name[other]}</p>
-                      <p className="mt-1 text-sm text-ink/60">{t(item.description)}</p>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-baseline">
+                          <h4 className="font-display text-xl transition-colors group-hover:text-clay md:text-2xl">{t(item.name)}</h4>
+                          <span className="mx-3 flex-1 -translate-y-1 border-b border-dotted border-ink/35" />
+                          <p className="font-display text-xl md:text-2xl">
+                            {item.price}
+                            <span className="ml-1.5 font-sans text-[10px] font-medium tracking-widest text-ink/50">
+                              {t(siteConfig.currency)}
+                            </span>
+                          </p>
+                        </div>
+                        {/* The name in the other language, so the menu reads in both */}
+                        <p lang={other} className="mt-1 text-sm font-medium text-clay">{item.name[other]}</p>
+                        <p className="mt-1 text-sm text-ink/60">{t(item.description)}</p>
+                      </div>
                     </li>
                   ))}
                 </ul>

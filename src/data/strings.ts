@@ -26,8 +26,6 @@ type Strings = {
     body: string;
     caption: string;
     photoAlt: string;
-    cupsLabel: string;
-    cups: { name: string; meaning: string; description: string }[];
   };
   menu: { eyebrow: string; heading: Heading; intro: string; hoverHint: string; sampleNote: string };
   gallery: {
@@ -93,24 +91,6 @@ export const strings: Record<Lang, Strings> = {
       body: 'Every great café experience starts with a warm welcome. Dallas Cafe & Booth brings together the pleasure of good coffee, satisfying snacks, and a comfortable atmosphere where people can relax, connect, and enjoy the moment in the heart of Wolaita Sodo.',
       caption: 'The jebena, at the centre of the table',
       photoAlt: 'A clay jebena on a woven mat beside a small cup of freshly poured coffee',
-      cupsLabel: 'Three cups, by tradition',
-      cups: [
-        {
-          name: 'Abol',
-          meaning: 'The first cup',
-          description: 'Bold and full. For us it stands for the coffee itself: Ethiopian beans, carefully brewed.',
-        },
-        {
-          name: 'Tona',
-          meaning: 'The second cup',
-          description: 'Softer and slower. Time to add something to the table: a sambusa, a pastry, a fresh juice.',
-        },
-        {
-          name: 'Baraka',
-          meaning: 'The blessing',
-          description: 'The cup that keeps you a little longer, in a warm room with people you like.',
-        },
-      ],
     },
     menu: {
       eyebrow: 'The menu',
@@ -193,24 +173,6 @@ export const strings: Record<Lang, Strings> = {
       body: 'እያንዳንዱ ምርጥ የካፌ ቆይታ በሞቀ አቀባበል ይጀምራል። ዳላስ ካፌ እና ቡዝ ጥሩ ቡናን፣ አርኪ መክሰስን እና ምቹ ድባብን በአንድ ላይ ያቀርባል፤ በወላይታ ሶዶ እምብርት ሰዎች የሚዝናኑበት፣ የሚገናኙበት እና ጊዜያቸውን የሚያጣጥሙበት ስፍራ ነው።',
       caption: 'ጀበና፣ በጠረጴዛው መሃል',
       photoAlt: 'በሰፌድ ላይ የተቀመጠ የሸክላ ጀበና እና አዲስ የተቀዳ ቡና የያዘ ሲኒ',
-      cupsLabel: 'ሦስት ሲኒ፣ እንደ ባህላችን',
-      cups: [
-        {
-          name: 'አቦል',
-          meaning: 'የመጀመሪያው ሲኒ',
-          description: 'ጠንካራና ሙሉ ጣዕም ያለው። ለእኛ ቡናውን ራሱን ይወክላል፤ በጥንቃቄ የተፈላ የኢትዮጵያ ቡና።',
-        },
-        {
-          name: 'ቶና',
-          meaning: 'ሁለተኛው ሲኒ',
-          description: 'ለስለስ ያለና የተረጋጋ። ከጎኑ አንድ ነገር የሚጨመርበት ጊዜ፤ ሳምቡሳ፣ ፓስትሪ ወይም ትኩስ ጭማቂ።',
-        },
-        {
-          name: 'በረካ',
-          meaning: 'በረከቱ',
-          description: 'ትንሽ ተጨማሪ ጊዜ እንዲቆዩ የሚያደርግ ሲኒ፤ በሞቀ ቤት ውስጥ ከሚወዷቸው ሰዎች ጋር።',
-        },
-      ],
     },
     menu: {
       eyebrow: 'ሜኑ',

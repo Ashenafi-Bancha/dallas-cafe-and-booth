@@ -8,6 +8,7 @@ import sharp from 'sharp';
 const SRC = 'image-sources';
 const OUT = 'public/images';
 const SMALL_WIDTH = 640;
+const THUMB_WIDTH = 200;
 
 await mkdir(OUT, { recursive: true });
 
@@ -22,6 +23,10 @@ for (const file of await readdir(SRC)) {
     .resize({ width: SMALL_WIDTH })
     .webp({ quality: 74 })
     .toFile(path.join(OUT, `${name}-sm.webp`));
+  await sharp(input)
+    .resize({ width: THUMB_WIDTH })
+    .webp({ quality: 72 })
+    .toFile(path.join(OUT, `${name}-xs.webp`));
 
   console.log(`${name}: { width: ${width}, height: ${height} },`);
 }
