@@ -78,66 +78,53 @@ export const siteConfig: SiteConfig = {
   menuIsSample: true,
   menu: [
     {
-      category: { en: "Coffee & Hot Drinks", am: "ቡና እና ትኩስ መጠጦች" },
+      category: { en: "Coffee", am: "ቡና" },
       items: [
-        {
-          name: { en: "Ethiopian Coffee", am: "የኢትዮጵያ ቡና" },
-          price: "25",
-          description: { en: "Traditional roasted Ethiopian coffee.", am: "በባህላዊ መንገድ የተቆላ የኢትዮጵያ ቡና።" },
-          photo: "ethiopian_coffee",
-        },
-        {
-          name: { en: "Macchiato", am: "ማኪያቶ" },
-          price: "30",
-          description: { en: "Espresso with a dash of frothy milk.", am: "ኤስፕሬሶ ከጥቂት አረፋማ ወተት ጋር።" },
-          photo: "macchiato",
-        },
-        {
-          name: { en: "Spiced Tea", am: "የቅመም ሻይ" },
-          price: "20",
-          description: { en: "Black tea infused with cardamom and cloves.", am: "በሄል እና በቅርንፉድ የተቀመመ ጥቁር ሻይ።" },
-          photo: "macchiato", // placeholder photo
-        },
+        { name: { en: "Ethiopian Coffee", am: "የኢትዮጵያ ቡና" }, price: "50", description: { en: "Traditional roasted Ethiopian coffee.", am: "በባህላዊ መንገድ የተቆላ የኢትዮጵያ ቡና።" }, photo: "ethiopian_coffee" },
+        { name: { en: "Spris", am: "ስፕሪስ" }, price: "55", description: { en: "Half coffee, half tea, poured in layers.", am: "ግማሽ ቡና፣ ግማሽ ሻይ በንብርብር የተቀዳ።" }, photo: "ethiopian_coffee" },
+        { name: { en: "Macchiato", am: "ማኪያቶ" }, price: "60", description: { en: "Espresso with a dash of frothy milk.", am: "ኤስፕሬሶ ከጥቂት አረፋማ ወተት ጋር።" }, photo: "macchiato" },
+        { name: { en: "Coffee with Milk", am: "ቡና በወተት" }, price: "65", description: { en: "Strong coffee topped up with hot milk.", am: "ጠንካራ ቡና ከትኩስ ወተት ጋር።" }, photo: "macchiato" },
+        { name: { en: "Cappuccino", am: "ካፑቺኖ" }, price: "70", description: { en: "Espresso under a thick cap of milk foam.", am: "ኤስፕሬሶ ከወፍራም የወተት አረፋ ጋር።" }, photo: "macchiato" },
+        { name: { en: "Café Latte", am: "ካፌ ላቴ" }, price: "75", description: { en: "Espresso with plenty of steamed milk.", am: "ኤስፕሬሶ ከብዙ የተፈላ ወተት ጋር።" }, photo: "macchiato" },
+      ],
+    },
+    {
+      // No tea photo yet, so these borrow the coffee photos
+      category: { en: "Tea & Milk", am: "ሻይ እና ወተት" },
+      items: [
+        { name: { en: "Tea", am: "ሻይ" }, price: "40", description: { en: "Classic black tea, served hot.", am: "ትኩስ ጥቁር ሻይ።" }, photo: "coffee_ceremony" },
+        { name: { en: "Spiced Tea", am: "የቅመም ሻይ" }, price: "55", description: { en: "Black tea infused with cardamom and cloves.", am: "በሄል እና በቅርንፉድ የተቀመመ ጥቁር ሻይ።" }, photo: "coffee_ceremony" },
+        { name: { en: "Ginger Tea", am: "የዝንጅብል ሻይ" }, price: "55", description: { en: "Fresh ginger steeped in hot tea.", am: "በትኩስ ዝንጅብል የተፈላ ሻይ።" }, photo: "coffee_ceremony" },
+        { name: { en: "Special Tea", am: "ስፔሻል ሻይ" }, price: "60", description: { en: "Black tea with ginger, cinnamon and a slice of lemon.", am: "ከዝንጅብል፣ ከቀረፋ እና ከሎሚ ጋር የሚቀርብ ሻይ።" }, photo: "coffee_ceremony" },
+        { name: { en: "Tea with Milk", am: "ሻይ በወተት" }, price: "60", description: { en: "Black tea with hot milk.", am: "ጥቁር ሻይ ከትኩስ ወተት ጋር።" }, photo: "macchiato" },
+        { name: { en: "Hot Milk", am: "ትኩስ ወተት" }, price: "60", description: { en: "Steamed fresh milk.", am: "የተፈላ ትኩስ ወተት።" }, photo: "macchiato" },
+        { name: { en: "Peanut Tea", am: "የለውዝ ሻይ" }, price: "70", description: { en: "A warm, creamy drink of ground peanuts.", am: "ከተፈጨ ለውዝ የሚዘጋጅ ሞቅ ያለ መጠጥ።" }, photo: "macchiato" },
       ],
     },
     {
       category: { en: "Snacks & Bites", am: "መክሰስ" },
       items: [
-        {
-          name: { en: "Sambusa", am: "ሳምቡሳ" },
-          price: "15",
-          description: { en: "Crispy pastry filled with spiced lentils.", am: "በቅመም ምስር የተሞላ ጥርት ያለ ሳምቡሳ።" },
-          photo: "snacks",
-        },
-        {
-          name: { en: "Fresh Pastry", am: "ትኩስ ፓስትሪ" },
-          price: "40",
-          description: { en: "Daily baked sweet and savory pastries.", am: "በየቀኑ የሚጋገሩ ጣፋጭ እና ጨዋማ ፓስትሪዎች።" },
-          photo: "snacks",
-        },
-        {
-          name: { en: "Special Burger", am: "ስፔሻል በርገር" },
-          price: "120",
-          description: { en: "Beef burger with local spices.", am: "በአገር ውስጥ ቅመሞች የተዘጋጀ የበሬ ሥጋ በርገር።" },
-          photo: "burger",
-        },
+        { name: { en: "Sambusa", am: "ሳምቡሳ" }, price: "55", description: { en: "Crispy pastry filled with spiced lentils.", am: "በቅመም ምስር የተሞላ ጥርት ያለ ሳምቡሳ።" }, photo: "snacks" },
+        { name: { en: "Bombolino", am: "ቦምቦሊኖ" }, price: "60", description: { en: "Soft fried doughnut dusted with sugar.", am: "በስኳር የተነሰነሰ ለስላሳ የተጠበሰ ዶናት።" }, photo: "snacks" },
+        { name: { en: "Fresh Pastry", am: "ትኩስ ፓስትሪ" }, price: "70", description: { en: "Daily baked sweet and savory pastries.", am: "በየቀኑ የሚጋገሩ ጣፋጭ እና ጨዋማ ፓስትሪዎች።" }, photo: "snacks" },
+        { name: { en: "Cake Slice", am: "ኬክ" }, price: "90", description: { en: "A slice of the day's cake.", am: "የዕለቱ ኬክ ቁራጭ።" }, photo: "snacks" },
+        { name: { en: "French Fries", am: "የድንች ጥብስ" }, price: "120", description: { en: "Crispy golden fries.", am: "ጥርት ያለ ወርቃማ የድንች ጥብስ።" }, photo: "burger" },
+        { name: { en: "Egg Sandwich", am: "የእንቁላል ሳንድዊች" }, price: "150", description: { en: "Scrambled egg, tomato and onion in fresh bread.", am: "የእንቁላል ፍርፍር፣ ቲማቲም እና ሽንኩርት በትኩስ ዳቦ።" }, photo: "snacks" },
+        { name: { en: "Club Sandwich", am: "ክለብ ሳንድዊች" }, price: "250", description: { en: "Triple-layer sandwich served with fries.", am: "ባለ ሦስት ድርብ ሳንድዊች ከድንች ጥብስ ጋር።" }, photo: "burger" },
+        { name: { en: "Special Burger", am: "ስፔሻል በርገር" }, price: "300", description: { en: "Beef burger with local spices.", am: "በአገር ውስጥ ቅመሞች የተዘጋጀ የበሬ ሥጋ በርገር።" }, photo: "burger" },
       ],
     },
     {
-      category: { en: "Cold Drinks", am: "ቀዝቃዛ መጠጦች" },
+      category: { en: "Juices & Cold Drinks", am: "ጭማቂ እና ቀዝቃዛ መጠጦች" },
       items: [
-        {
-          name: { en: "Fresh Avocado Juice", am: "ትኩስ የአቮካዶ ጭማቂ" },
-          price: "50",
-          description: { en: "Rich and creamy seasonal avocado.", am: "ወፍራምና ለስላሳ የወቅቱ አቮካዶ።" },
-          photo: "avocado_juice",
-        },
-        {
-          name: { en: "Mango Splash", am: "የማንጎ ጭማቂ" },
-          price: "50",
-          description: { en: "Freshly blended local mangoes.", am: "ትኩስ የተፈጨ የአገር ውስጥ ማንጎ።" },
-          photo: "avocado_juice", // placeholder photo
-        },
+        { name: { en: "Soft Drinks", am: "ለስላሳ መጠጦች" }, price: "60", description: { en: "Chilled bottled soft drinks.", am: "የቀዘቀዙ የታሸጉ ለስላሳ መጠጦች።" }, photo: "avocado_juice" },
+        { name: { en: "Iced Coffee", am: "ቀዝቃዛ ቡና" }, price: "90", description: { en: "Chilled coffee over ice.", am: "በበረዶ የሚቀርብ ቀዝቃዛ ቡና።" }, photo: "macchiato" },
+        { name: { en: "Fresh Avocado Juice", am: "ትኩስ የአቮካዶ ጭማቂ" }, price: "100", description: { en: "Rich and creamy seasonal avocado.", am: "ወፍራምና ለስላሳ የወቅቱ አቮካዶ።" }, photo: "avocado_juice" },
+        { name: { en: "Mango Splash", am: "የማንጎ ጭማቂ" }, price: "100", description: { en: "Freshly blended local mangoes.", am: "ትኩስ የተፈጨ የአገር ውስጥ ማንጎ።" }, photo: "avocado_juice" },
+        { name: { en: "Papaya Juice", am: "የፓፓያ ጭማቂ" }, price: "100", description: { en: "Smooth, ripe papaya.", am: "ለስላሳ የበሰለ ፓፓያ።" }, photo: "avocado_juice" },
+        { name: { en: "Pineapple Juice", am: "የአናናስ ጭማቂ" }, price: "110", description: { en: "Fresh pineapple, lightly sweet.", am: "ትኩስ አናናስ፣ በትንሹ ጣፋጭ።" }, photo: "avocado_juice" },
+        { name: { en: "Mixed Juice", am: "ድብልቅ ጭማቂ" }, price: "120", description: { en: "Avocado, mango and papaya in layers.", am: "አቮካዶ፣ ማንጎ እና ፓፓያ በንብርብር።" }, photo: "avocado_juice" },
+        { name: { en: "Special Juice", am: "ስፔሻል ጭማቂ" }, price: "150", description: { en: "Layered mixed juice topped with fresh fruit.", am: "በትኩስ ፍራፍሬ የተሸፈነ ድብልቅ ጭማቂ።" }, photo: "avocado_juice" },
       ],
     },
   ],
