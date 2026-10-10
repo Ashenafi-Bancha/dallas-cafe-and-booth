@@ -19,6 +19,14 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-12 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-5">
+            <img
+              src="/logo.png"
+              alt={t(siteConfig.name)}
+              width={480}
+              height={611}
+              loading="lazy"
+              className="mb-8 w-28 rounded-xl bg-[#fefefe] p-2.5 md:w-32"
+            />
             <p className="max-w-xs font-display text-2xl font-light leading-snug md:text-3xl">{s.footer.tagline}</p>
             <h4 className="eyebrow mt-10 mb-4 text-sand">{s.social.followUs}</h4>
             <SocialLinks />

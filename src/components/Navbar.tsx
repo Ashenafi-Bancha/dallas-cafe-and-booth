@@ -73,9 +73,18 @@ export function Navbar() {
       )}
     >
       <nav className="wrap flex items-center justify-between gap-4" aria-label="Main">
-        <a href="#home" className="relative z-50 flex items-baseline gap-2.5" onClick={() => setIsMobileMenuOpen(false)}>
-          <span className="font-display text-2xl md:text-[1.7rem] leading-none text-cream">{t(siteConfig.shortName)}</span>
-          <span className="eyebrow hidden text-gold min-[400px]:inline">{t(siteConfig.descriptor)}</span>
+        <a href="#home" className="relative z-50 flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+          <img
+            src="/logo-mark.png"
+            alt=""
+            width={192}
+            height={192}
+            className="h-11 w-11 shrink-0 rounded-full bg-[#fefefe] object-contain p-1 md:h-12 md:w-12"
+          />
+          <span className="flex items-baseline gap-2.5">
+            <span className="font-display text-2xl md:text-[1.7rem] leading-none text-cream">{t(siteConfig.shortName)}</span>
+            <span className="eyebrow hidden text-gold min-[440px]:inline">{t(siteConfig.descriptor)}</span>
+          </span>
         </a>
 
         {/* Desktop Nav */}
