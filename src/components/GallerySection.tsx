@@ -5,7 +5,22 @@ import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
 // Captions and alt text come from strings.ts, in this same order.
-const gallery: PhotoName[] = ['cafe_day', 'coffee_ceremony', 'macchiato', 'pizza_special', 'avocado_juice'];
+const gallery: PhotoName[] = [
+  'pavilion_day',
+  'pavilion_night',
+  'sign',
+  'seating_garden',
+  'ceremony_corner',
+  'pavilion_gate',
+  'seating_tables',
+  'pavilion_evening',
+  'seating_plant',
+  'pavilion_corner',
+  'seating_booth',
+  'seating_canopy',
+  'grounds',
+  'pavilion_garden',
+];
 
 export function GallerySection() {
   const { s } = useLang();
@@ -24,20 +39,20 @@ export function GallerySection() {
           <p className="max-w-xs text-sm leading-relaxed text-cream/65">{s.gallery.intro}</p>
         </Reveal>
 
-        {/* Every photo keeps its own proportions, so nothing is cropped.
-            One per row on phones, a single row of five on desktop. */}
-        <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
+        {/* Every photo keeps its own proportions, so nothing is cropped: tall and wide
+            photos pack into columns. One column on phones, two on tablets, three on desktop. */}
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
           {gallery.map((photo, i) => (
-            <Reveal key={photo} delay={(i % 3) * 0.08}>
+            <Reveal key={photo} className="mb-6 break-inside-avoid">
               <figure>
                 <Photo
                   name={photo}
                   alt={s.gallery.items[i].alt}
-                  sizes="(min-width: 1024px) 20vw, (min-width: 768px) 33vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="h-auto w-full"
                 />
                 <figcaption className="mt-3 flex items-baseline gap-3">
-                  <span className="text-xs text-gold">0{i + 1}</span>
+                  <span className="text-xs text-gold">{String(i + 1).padStart(2, '0')}</span>
                   <span className="font-display text-lg italic">{withPlainAmpersand(s.gallery.items[i].caption)}</span>
                 </figcaption>
               </figure>

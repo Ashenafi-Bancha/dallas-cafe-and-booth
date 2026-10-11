@@ -11,8 +11,8 @@ export function ExploreSection() {
 
   const pages: { name: string; to: string; photo: PhotoName }[] = [
     { name: s.nav.menu, to: '/menu', photo: 'pizza_special' },
-    { name: s.nav.play, to: '/kids', photo: 'play_castle' },
-    { name: s.nav.gallery, to: '/gallery', photo: 'cafe_day' },
+    { name: s.nav.play, to: '/kids', photo: 'play_castle_front' },
+    { name: s.nav.gallery, to: '/gallery', photo: 'seating_garden' },
     { name: s.nav.visit, to: '/visit', photo: 'cafe_night' },
   ];
 

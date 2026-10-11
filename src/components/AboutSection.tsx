@@ -15,7 +15,7 @@ export function AboutSection() {
           <figure>
             <div className="aspect-[4/5] overflow-hidden">
               <Photo
-                name="ethiopian_coffee"
+                name="ceremony_corner"
                 alt={s.about.photoAlt}
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="h-full w-full object-cover"

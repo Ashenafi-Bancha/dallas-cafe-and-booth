@@ -5,7 +5,7 @@ import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
 // Captions and alt text come from strings.ts, in this same order
-const playPhotos: PhotoName[] = ['play_castle', 'play_trampoline', 'play_slides', 'play_seesaw'];
+const playPhotos: PhotoName[] = ['play_castle', 'play_trampoline', 'play_slides', 'play_seesaw', 'play_swing', 'play_castle_front'];
 
 export function PlaySection() {
   const { s } = useLang();
@@ -25,14 +25,14 @@ export function PlaySection() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-3 md:mt-16 items-start md:grid-cols-2 md:gap-4 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-3 md:mt-16 items-start md:grid-cols-2 md:gap-4 lg:grid-cols-3">
           {playPhotos.map((photo, i) => (
             <Reveal key={photo} delay={(i % 2) * 0.08}>
               <figure>
                 <Photo
                   name={photo}
                   alt={s.play.items[i].alt}
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="h-auto w-full"
                 />
                 <figcaption className="mt-4 flex items-baseline gap-3">
