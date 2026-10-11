@@ -1,4 +1,5 @@
 import { siteConfig } from '../data/config';
+import { Link } from 'react-router-dom';
 import { useLang } from '../i18n';
 import { SocialLinks } from './SocialLinks';
 
@@ -6,12 +7,12 @@ export function Footer() {
   const { s, t } = useLang();
 
   const quickLinks = [
-    { name: s.nav.home, href: '#home' },
-    { name: s.nav.story, href: '#about' },
-    { name: s.nav.menu, href: '#menu' },
-    { name: s.nav.play, href: '#play' },
-    { name: s.nav.gallery, href: '#gallery' },
-    { name: s.nav.visit, href: '#contact' },
+    { name: s.nav.home, href: '/' },
+    { name: s.nav.story, href: '/#about' },
+    { name: s.nav.menu, href: '/menu' },
+    { name: s.nav.play, href: '/kids' },
+    { name: s.nav.gallery, href: '/gallery' },
+    { name: s.nav.visit, href: '/visit' },
   ];
 
   return (
@@ -41,7 +42,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-cream/75">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition-colors hover:text-gold">{link.name}</a>
+                  <Link to={link.href} className="transition-colors hover:text-gold">{link.name}</Link>
                 </li>
               ))}
             </ul>

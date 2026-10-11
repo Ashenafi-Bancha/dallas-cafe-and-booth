@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import type { Lang, Localized } from './data/config';
+import { siteConfig, type Lang, type Localized } from './data/config';
 import { strings } from './data/strings';
 
 const STORAGE_KEY = 'dallas-cafe-lang';
@@ -29,7 +29,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = strings[lang].meta.title;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {
@@ -55,4 +54,14 @@ export function useLang() {
   const ctx = useContext(LanguageContext);
   if (!ctx) throw new Error('useLang must be used inside LanguageProvider');
   return ctx;
+}
+
+// Sets the browser tab title: the page name before the cafe name, or the full site title on the home page
+export function usePageTitle(pageName?: string) {
+  const { s, t } = useLang();
+  const title = pageName ? `${pageName} | ${t(siteConfig.name)}` : s.meta.title;
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 }

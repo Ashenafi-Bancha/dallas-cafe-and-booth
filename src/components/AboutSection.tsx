@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
@@ -33,13 +34,13 @@ export function AboutSection() {
               {s.about.heading.before} <em className="text-gold">{s.about.heading.accent}</em>
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">{s.about.body}</p>
-            <a
-              href="#menu"
+            <Link
+              to="/menu"
               className="group mt-10 inline-flex items-center gap-3 border-b border-gold pb-1.5 text-sm font-medium text-cream transition-colors hover:text-gold"
             >
               {s.hero.primaryCta}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

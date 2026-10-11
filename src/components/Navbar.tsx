@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Check, ChevronDown, Globe } from 'lucide-react';
 import clsx from 'clsx';
 import { siteConfig, type Lang } from '../data/config';
+import { Link, useLocation } from 'react-router-dom';
 import { useLang } from '../i18n';
 import { easeOut } from './Reveal';
 import { SocialLinks } from './SocialLinks';
@@ -92,13 +93,15 @@ export function Navbar() {
   const { s, t } = useLang();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Only the home page has a photo behind the header; elsewhere it needs its own background
+  const isHome = useLocation().pathname === '/';
 
   const navLinks = [
-    { name: s.nav.story, href: '#about' },
-    { name: s.nav.menu, href: '#menu' },
-    { name: s.nav.play, href: '#play' },
-    { name: s.nav.gallery, href: '#gallery' },
-    { name: s.nav.visit, href: '#contact' },
+    { name: s.nav.story, href: '/#about' },
+    { name: s.nav.menu, href: '/menu' },
+    { name: s.nav.play, href: '/kids' },
+    { name: s.nav.gallery, href: '/gallery' },
+    { name: s.nav.visit, href: '/visit' },
   ];
 
   useEffect(() => {
@@ -122,13 +125,13 @@ export function Navbar() {
     <header
       className={clsx(
         'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500',
-        isScrolled && !isMobileMenuOpen
+        (isScrolled || !isHome) && !isMobileMenuOpen
           ? 'bg-ink/85 backdrop-blur-md border-cream/10 py-3.5'
           : 'bg-transparent border-transparent py-5 md:py-6'
       )}
     >
       <nav className="wrap flex items-center justify-between gap-2 md:gap-3" aria-label="Main">
-        <a href="#home" className="relative z-50 flex min-w-0 items-center gap-2 md:gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+        <Link to="/" className="relative z-50 flex min-w-0 items-center gap-2 md:gap-3" onClick={() => setIsMobileMenuOpen(false)}>
           <img
             src="/logo-mark.png"
             alt=""
@@ -139,27 +142,27 @@ export function Navbar() {
           <span className="whitespace-nowrap font-sans text-[clamp(0.85rem,4.6vw,1.1rem)] font-bold uppercase leading-none tracking-[0.14em] text-cream md:text-xl">
             {t(siteConfig.shortName)}
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <ul className="flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="group relative text-sm text-cream/80 hover:text-cream transition-colors">
+                <Link to={link.href} className="group relative text-sm text-cream/80 hover:text-cream transition-colors">
                   {link.name}
                   <span className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100" />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
           <LanguageSwitch />
-          <a
-            href="#menu"
+          <Link
+            to="/menu"
             className="hidden rounded-full border border-gold/60 px-5 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-ink lg:block"
           >
             {s.nav.cta}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile language switch and menu toggle */}
@@ -197,14 +200,14 @@ export function Navbar() {
                   transition={{ duration: 0.6, delay: 0.08 + i * 0.07, ease: easeOut }}
                   className="border-b border-cream/10"
                 >
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="flex items-baseline justify-between py-4 font-display text-4xl text-cream"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
                     <span className="font-sans text-xs text-gold">0{i + 1}</span>
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Baby, BookOpen, Images, MapPin, UtensilsCrossed } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
@@ -9,11 +10,11 @@ export function HeroSection() {
   const { s } = useLang();
 
   const quickLinks = [
-    { name: s.nav.menu, href: '#menu', icon: UtensilsCrossed },
-    { name: s.nav.play, href: '#play', icon: Baby },
-    { name: s.nav.gallery, href: '#gallery', icon: Images },
-    { name: s.nav.story, href: '#about', icon: BookOpen },
-    { name: s.nav.visit, href: '#contact', icon: MapPin },
+    { name: s.nav.menu, href: '/menu', icon: UtensilsCrossed },
+    { name: s.nav.play, href: '/kids', icon: Baby },
+    { name: s.nav.gallery, href: '/gallery', icon: Images },
+    { name: s.nav.story, href: '/#about', icon: BookOpen },
+    { name: s.nav.visit, href: '/visit', icon: MapPin },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -98,20 +99,20 @@ export function HeroSection() {
                   aria-hidden="true"
                   className="absolute left-1/2 top-1/2 aspect-square w-[160%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_0deg,#E11D2A,#FFD21F,#E11D2A,#FFD21F,#E11D2A)] motion-reduce:hidden sm:hidden"
                 />
-                <a
-                  href="#menu"
+                <Link
+                  to="/menu"
                   className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-3 text-[15px] font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
                 >
                   {s.hero.primaryCta}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </span>
-              <a
-                href="#contact"
+              <Link
+                to="/visit"
                 className="border-b border-cream/40 pb-1 text-sm font-medium text-cream transition-colors hover:border-gold hover:text-gold"
               >
                 {s.hero.secondaryCta}
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -123,25 +124,25 @@ export function HeroSection() {
           className="wrap pb-6 lg:pb-8"
         >
           {/* Phones: an animated scroll cue. Desktop: opening details. */}
-          <a href="#about" className="flex flex-col items-center gap-3 text-cream/80 lg:hidden">
+          <Link to="/#about" className="flex flex-col items-center gap-3 text-cream/80 lg:hidden">
             <span className="flex h-10 w-6 justify-center rounded-full border border-cream/50 pt-2">
               <span className="h-2 w-1 animate-scroll-cue rounded-full bg-gold motion-reduce:animate-none" />
             </span>
             <span className="eyebrow">{s.hero.scrollExplore}</span>
-          </a>
+          </Link>
 
           {/* Phones: shortcuts to each section */}
           <nav aria-label={s.footer.explore} className="mt-6 lg:hidden">
             <ul className="grid grid-cols-5 gap-2">
               {quickLinks.map(({ name, href, icon: Icon }) => (
                 <li key={href}>
-                  <a
-                    href={href}
+                  <Link
+                    to={href}
                     className="flex flex-col items-center gap-1.5 rounded-xl border border-cream/15 bg-ink/50 px-1 py-2.5 text-[11px] leading-none text-cream/90 backdrop-blur-sm transition-colors active:border-gold active:text-gold"
                   >
                     <Icon className="h-[18px] w-[18px] text-gold" strokeWidth={1.5} />
                     <span className="whitespace-nowrap">{name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -158,10 +159,10 @@ export function HeroSection() {
                 <dd className="mt-1.5 text-sm text-cream">{s.hero.offer}</dd>
               </div>
             </dl>
-            <a href="#about" className="flex items-center gap-2 text-xs text-cream/80 hover:text-gold">
+            <Link to="/#about" className="flex items-center gap-2 text-xs text-cream/80 hover:text-gold">
               {s.hero.scroll}
               <ArrowDown className="h-3.5 w-3.5" />
-            </a>
+            </Link>
           </div>
         </motion.div>
       </section>
