@@ -157,7 +157,7 @@ export const strings: Record<Lang, Strings> = {
       explore: 'Explore',
       findUs: 'Find us',
       rights: 'All rights reserved.',
-      credit: 'Designed for Wolaita Sodo.',
+      credit: 'Developed by Ashenafi Bancha',
     },
   },
 
@@ -254,7 +254,7 @@ export const strings: Record<Lang, Strings> = {
       explore: 'ገጾች',
       findUs: 'ያግኙን',
       rights: 'መብቱ በሕግ የተጠበቀ ነው።',
-      credit: 'ለወላይታ ሶዶ የተዘጋጀ።',
+      credit: 'የተሠራው በአሸናፊ ባንቻ',
     },
   },
 };

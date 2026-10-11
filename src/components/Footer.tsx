@@ -97,7 +97,13 @@ export function Footer() {
 
       <div className="wrap flex flex-col items-center justify-between gap-2 py-6 text-xs text-cream/45 sm:flex-row">
         <p>&copy; {new Date().getFullYear()} {t(siteConfig.name)}. {s.footer.rights}</p>
-        <p>{s.footer.credit}</p>
+        <p>
+          {s.footer.credit} (
+          <a href={`tel:${siteConfig.developer.phoneDial}`} className="transition-colors hover:text-gold">
+            {siteConfig.developer.phone}
+          </a>
+          )
+        </p>
       </div>
     </footer>
   );

@@ -81,6 +81,8 @@ type SiteConfig = {
   socials: { instagram: string | null; tiktok: string | null; facebook: string | null; telegram: string | null };
   // Networks to show as a non-clickable placeholder until their link is added above
   socialPlaceholders: (keyof SiteConfig['socials'])[];
+  // Shown in the footer credit line
+  developer: { phone: string; phoneDial: string };
   menuIsSample: boolean;
   menu: MenuCategory[];
 };
@@ -114,6 +116,7 @@ export const siteConfig: SiteConfig = {
     telegram: null,
   },
   socialPlaceholders: ["facebook"],
+  developer: { phone: "0938103340", phoneDial: "+251938103340" },
   menuIsSample: true,
   menu: [
     {
