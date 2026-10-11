@@ -71,7 +71,7 @@ type SiteConfig = {
   };
   // The Amharic hours use the Ethiopian clock (6:00 AM is 12:00 in the morning).
   openingHours: { weekdays: Localized; weekends: Localized };
-  socials: { facebook: string | null; instagram: string | null; telegram: string | null };
+  socials: { instagram: string | null; tiktok: string | null; facebook: string | null; telegram: string | null };
   menuIsSample: boolean;
   menu: MenuCategory[];
 };
@@ -96,8 +96,9 @@ export const siteConfig: SiteConfig = {
     weekends: { en: "6:00 AM – 11:00 PM", am: "ጠዋት 12:00 – ምሽት 5:00" },
   },
   socials: {
+    instagram: "https://www.instagram.com/dallascafeandbooth",
+    tiktok: "https://www.tiktok.com/@dallascafeandbooth",
     facebook: null,
-    instagram: null,
     telegram: null,
   },
   menuIsSample: true,

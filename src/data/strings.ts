@@ -50,7 +50,7 @@ type Strings = {
     mapSoonBody: string;
     mapTitle: string;
   };
-  social: { followUs: string; soon: string };
+  social: { followUs: string };
   footer: { tagline: string; explore: string; findUs: string; rights: string; credit: string };
 };
 
@@ -127,7 +127,7 @@ export const strings: Record<Lang, Strings> = {
       mapSoonBody: 'We are confirming our exact pin in Wolaita Sodo and will add the map here.',
       mapTitle: 'Map showing Dallas Cafe & Booth',
     },
-    social: { followUs: 'Follow us', soon: 'link coming soon' },
+    social: { followUs: 'Follow us' },
     footer: {
       tagline: 'Your favorite spot in Wolaita Sodo for great coffee, delicious bites, and memorable moments.',
       explore: 'Explore',
@@ -209,7 +209,7 @@ export const strings: Record<Lang, Strings> = {
       mapSoonBody: 'በወላይታ ሶዶ ያለንበትን ትክክለኛ ቦታ እያረጋገጥን ነው፤ ካርታውን እዚህ እናክላለን።',
       mapTitle: 'ዳላስ ካፌ እና ቡዝን የሚያሳይ ካርታ',
     },
-    social: { followUs: 'ይከተሉን', soon: 'ሊንኩ በቅርቡ ይጨመራል' },
+    social: { followUs: 'ይከተሉን' },
     footer: {
       tagline: 'በወላይታ ሶዶ ለምርጥ ቡና፣ ለጣፋጭ መክሰስ እና ለማይረሱ ጊዜያት የሚመርጡት ስፍራ።',
       explore: 'ገጾች',
