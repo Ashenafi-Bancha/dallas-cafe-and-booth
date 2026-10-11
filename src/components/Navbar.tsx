@@ -42,10 +42,12 @@ function LanguageSwitch() {
         aria-label={s.nav.language}
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        className="flex h-10 items-center gap-1.5 rounded-full border border-cream/20 px-3 text-xs font-medium text-cream transition-colors hover:border-gold"
+        className="flex h-10 items-center gap-1 rounded-full border border-cream/20 px-2.5 text-xs font-medium text-cream transition-colors hover:border-gold md:gap-1.5 md:px-3"
       >
         <Globe className="h-4 w-4" strokeWidth={1.5} />
-        <span lang={current.code}>{current.short}</span>
+        <span lang={current.code} className="hidden min-[375px]:inline">
+          {current.short}
+        </span>
         <ChevronDown className={clsx('h-3.5 w-3.5 transition-transform duration-200', isOpen && 'rotate-180')} />
       </button>
 
@@ -125,19 +127,19 @@ export function Navbar() {
           : 'bg-transparent border-transparent py-5 md:py-6'
       )}
     >
-      <nav className="wrap flex items-center justify-between gap-3" aria-label="Main">
-        <a href="#home" className="relative z-50 flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+      <nav className="wrap flex items-center justify-between gap-2 md:gap-3" aria-label="Main">
+        <a href="#home" className="relative z-50 flex min-w-0 items-center gap-2 md:gap-3" onClick={() => setIsMobileMenuOpen(false)}>
           <img
             src="/logo-mark.png"
             alt=""
             width={192}
             height={192}
-            className="h-11 w-11 shrink-0 rounded-full bg-[#fefefe] object-contain p-1 md:h-12 md:w-12"
+            className="h-10 w-10 shrink-0 rounded-full bg-[#fefefe] object-contain p-1 md:h-12 md:w-12"
           />
-          {/* Name stacked over the descriptor on phones, side by side from tablet up */}
-          <span className="flex flex-col gap-1.5 md:flex-row md:items-baseline md:gap-2.5">
-            <span className="font-display text-2xl md:text-[1.7rem] leading-none text-cream">{t(siteConfig.shortName)}</span>
-            <span className="whitespace-nowrap text-[10px] font-medium uppercase leading-none tracking-[0.22em] text-gold md:text-[11px] md:tracking-[0.28em] [html[lang=am]_&]:text-xs [html[lang=am]_&]:tracking-normal">
+          {/* Name and descriptor on one line; the descriptor is yellow on phones, gold from tablet up */}
+          <span className="flex items-baseline gap-1.5 whitespace-nowrap md:gap-2.5">
+            <span className="font-display text-[clamp(0.85rem,4.6vw,1.2rem)] leading-none text-cream md:text-[1.7rem]">{t(siteConfig.shortName)}</span>
+            <span className="text-[clamp(8px,2.5vw,10px)] font-semibold uppercase leading-none tracking-[0.1em] text-[#FFD21F] md:text-[11px] md:font-medium md:tracking-[0.28em] md:text-gold [html[lang=am]_&]:text-xs [html[lang=am]_&]:tracking-normal">
               {t(siteConfig.descriptor)}
             </span>
           </span>

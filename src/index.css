@@ -9,6 +9,7 @@
   --color-sand: #B9A88F;
   --color-gold: #C9A45C;
   --color-clay: #B5532C;
+  --color-sign: #D4242F;
 
   --font-sans: "DM Sans", "Noto Sans Ethiopic", system-ui, -apple-system, sans-serif;
   --font-display: "Fraunces", "Noto Serif Ethiopic", Georgia, "Times New Roman", serif;
@@ -79,6 +80,21 @@ section[id] {
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
+  }
+
+  /* Signboard lettering: the cafe sign's red with a cream edge, so it reads over any photo */
+  .sign-text {
+    color: var(--color-sign);
+    text-shadow:
+      2px 0 0 #fffdf8,
+      -2px 0 0 #fffdf8,
+      0 2px 0 #fffdf8,
+      0 -2px 0 #fffdf8,
+      1.5px 1.5px 0 #fffdf8,
+      -1.5px 1.5px 0 #fffdf8,
+      1.5px -1.5px 0 #fffdf8,
+      -1.5px -1.5px 0 #fffdf8,
+      0 4px 22px rgb(18 14 11 / 0.55);
   }
 
   /* Woven-border strip, after the tibeb edging on Ethiopian dress */

@@ -135,7 +135,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight text-balance text-white [text-shadow:0_2px_24px_rgb(18_14_11/0.65)] sm:text-6xl xl:text-[5rem]"
+              className="font-display text-[2.6rem] sign-text font-semibold leading-[1.08] tracking-tight text-balance sm:text-6xl xl:text-[5rem]"
             >
               {s.hero.heading.before} <em>{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
