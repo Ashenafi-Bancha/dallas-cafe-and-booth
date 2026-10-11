@@ -17,7 +17,9 @@ type Strings = {
     kind: string;
     offer: string;
     scroll: string;
+    scrollExplore: string;
     photoAlt: string;
+    slideLabel: string;
     marquee: string[];
   };
   about: {
@@ -90,7 +92,9 @@ export const strings: Record<Lang, Strings> = {
       kind: 'Café & snack house',
       offer: 'Coffee, juice & bites',
       scroll: 'Scroll',
+      scrollExplore: 'Scroll to explore',
       photoAlt: 'The Dallas Café garden pavilion lit up at night, with guests at the tables',
+      slideLabel: 'Show photo',
       marquee: ['Buna', 'Macchiato', 'Spiced tea', 'Sambusa', 'Fresh pastry', 'Avocado juice', 'Mango splash'],
     },
     about: {
@@ -185,7 +189,9 @@ export const strings: Record<Lang, Strings> = {
       kind: 'ካፌ እና መክሰስ ቤት',
       offer: 'ቡና፣ ጭማቂ እና መክሰስ',
       scroll: 'ወደ ታች',
+      scrollExplore: 'ለማየት ወደ ታች ይሸብልሉ',
       photoAlt: 'በምሽት መብራት የደመቀው የዳላስ ካፌ የአትክልት ስፍራ ዳስ፣ እንግዶች በጠረጴዛዎች ላይ',
+      slideLabel: 'ምስል አሳይ',
       marquee: ['ቡና', 'ማኪያቶ', 'የቅመም ሻይ', 'ሳምቡሳ', 'ትኩስ ፓስትሪ', 'የአቮካዶ ጭማቂ', 'የማንጎ ጭማቂ'],
     },
     about: {
