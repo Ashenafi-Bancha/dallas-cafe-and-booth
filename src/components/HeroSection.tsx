@@ -140,6 +140,16 @@ export function HeroSection() {
               {s.hero.heading.before} <em>{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
 
+            {/* Tagline in the logo's blue */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.6, ease: easeOut }}
+              className="tagline-text mt-3 font-accent text-[1.7rem] font-bold italic leading-tight tracking-wide sm:text-4xl md:mt-4 xl:text-5xl"
+            >
+              {s.hero.tagline}
+            </motion.p>
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
