@@ -7,7 +7,7 @@ import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
 
-// `focus` keeps each photo's subject in frame on desktop, where the photo fills the whole hero
+// `focus` keeps each photo's subject in frame on desktop, where only a wide band of the tall photo shows
 const slides: { photo: PhotoName; focus: string }[] = [
   { photo: 'cafe_night', focus: 'lg:object-[50%_62%]' },
   { photo: 'cafe_day', focus: 'lg:object-[50%_64%]' },
@@ -49,8 +49,7 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow behind the text. On desktop each photo fills the hero edge to edge.
-            On phones it is shown whole across the top, over a blurred copy of itself. */}
+        {/* Photo slideshow, filling the hero edge to edge behind the text */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
@@ -72,31 +71,27 @@ export function HeroSection() {
                   aria-hidden={!isCurrent}
                   className="absolute inset-0"
                 >
-                  {/* Blurred backdrop, drifting slowly while the slide is up */}
+                  {/* A slow drift towards the viewer while the slide is up */}
                   <motion.div
                     initial={false}
-                    animate={{ scale: isCurrent ? 1.25 : 1.15 }}
+                    animate={{ scale: isCurrent ? 1.08 : 1 }}
                     transition={{ duration: isCurrent ? 8 : 0, ease: 'linear' }}
-                    className="absolute inset-0"
+                    className="h-full w-full"
                   >
-                    <Photo name={photo} alt="" sizes="200px" className="h-full w-full object-cover blur-2xl brightness-75" />
+                    <Photo
+                      name={photo}
+                      alt={slideAlts[i]}
+                      sizes="100vw"
+                      eager={i === 0}
+                      className={clsx('h-full w-full object-cover', focus)}
+                    />
                   </motion.div>
-                  <Photo
-                    name={photo}
-                    alt={slideAlts[i]}
-                    sizes="100vw"
-                    eager={i === 0}
-                    className={clsx(
-                      'absolute inset-x-0 top-[4.5rem] h-[calc(100%-4.5rem)] w-full object-contain object-top lg:top-0 lg:h-full lg:object-cover',
-                      focus
-                    )}
-                  />
                 </motion.div>
               );
             })}
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink from-20% via-ink/70 via-50% to-transparent to-75% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-15% via-ink/65 via-50% to-ink/5 to-80% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
           <div className="absolute inset-x-0 bottom-0 hidden h-44 bg-linear-to-t from-ink/75 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
