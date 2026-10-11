@@ -1,5 +1,6 @@
 import type { PhotoName } from '../data/config';
 import { useLang } from '../i18n';
+import { withPlainAmpersand } from './Ampersand';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
@@ -38,7 +39,7 @@ export function PlaySection() {
                 </div>
                 <figcaption className="mt-4 flex items-baseline gap-3">
                   <span className="text-xs text-gold">0{i + 1}</span>
-                  <span className="font-display text-xl italic">{s.play.items[i].caption}</span>
+                  <span className="font-display text-xl italic">{withPlainAmpersand(s.play.items[i].caption)}</span>
                 </figcaption>
               </figure>
             </Reveal>

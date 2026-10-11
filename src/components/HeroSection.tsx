@@ -41,8 +41,8 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow: full-bleed background on phones, the right half on desktop */}
-        <div className="absolute inset-0 -z-10 overflow-hidden lg:left-[50%]">
+        {/* Photo slideshow, full-bleed behind the text */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -63,24 +63,36 @@ export function HeroSection() {
                   aria-hidden={!isCurrent}
                   className="absolute inset-0"
                 >
-                  <Photo
-                    name={photo}
-                    alt={slideAlts[i]}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    eager={i === 0}
-                    className={clsx('h-full w-full object-cover', focus)}
-                  />
+                  {/* A slow drift towards the viewer while the slide is up */}
+                  <motion.div
+                    initial={false}
+                    animate={{ scale: isCurrent ? 1.08 : 1 }}
+                    transition={{ duration: isCurrent ? 8 : 0, ease: 'linear' }}
+                    className="h-full w-full"
+                  >
+                    <Photo
+                      name={photo}
+                      alt={slideAlts[i]}
+                      sizes="100vw"
+                      eager={i === 0}
+                      className={clsx('h-full w-full object-cover', focus)}
+                    />
+                  </motion.div>
                 </motion.div>
               );
             })}
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink lg:via-ink/35 lg:via-30% lg:to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink/95 lg:via-ink/60 lg:via-45% lg:to-ink/10" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-56 bg-linear-to-t from-ink/85 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
         {/* Slide picker */}
         <div className="absolute right-3 top-24 z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
+          <span className="mr-3 hidden text-xs tabular-nums text-cream/70 lg:inline">
+            0{slide.current + 1} / 0{slides.length}
+          </span>
           {slides.map(({ photo }, i) => (
             <button
               key={photo}
@@ -100,7 +112,7 @@ export function HeroSection() {
         </div>
 
         <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">
-          <div className="lg:max-w-[46%]">
+          <div className="lg:max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -115,7 +127,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[3.1rem] font-light leading-[0.98] tracking-tight text-balance sm:text-7xl lg:text-6xl xl:text-[5.5rem]"
+              className="font-display text-[3.1rem] font-light leading-[0.98] tracking-tight text-balance sm:text-7xl xl:text-[5.5rem]"
             >
               {s.hero.heading.before} <em className="whitespace-nowrap text-gold">{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
@@ -135,11 +147,11 @@ export function HeroSection() {
               transition={{ duration: 0.9, delay: 0.9, ease: easeOut }}
               className="mt-7 flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:mt-10"
             >
-              {/* On phones the button spans the screen, with a light running round its border */}
+              {/* On phones the button spans the screen, with red and yellow turning round its border */}
               <span className="relative block w-full overflow-hidden rounded-2xl bg-ink/70 p-[2px] sm:w-auto sm:overflow-visible sm:rounded-full sm:bg-transparent sm:p-0">
                 <span
                   aria-hidden="true"
-                  className="absolute left-1/2 top-1/2 aspect-square w-[160%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,transparent_62%,#C9A45C_80%,#F4ECDD_96%,transparent_100%)] motion-reduce:hidden sm:hidden"
+                  className="absolute left-1/2 top-1/2 aspect-square w-[160%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_0deg,#E11D2A,#FFD21F,#E11D2A,#FFD21F,#E11D2A)] motion-reduce:hidden sm:hidden"
                 />
                 <a
                   href="#menu"
@@ -173,7 +185,7 @@ export function HeroSection() {
             <span className="eyebrow">{s.hero.scrollExplore}</span>
           </a>
 
-          <div className="hidden items-end justify-between gap-6 border-t border-cream/15 pt-5 lg:flex lg:max-w-[46%]">
+          <div className="hidden items-end justify-between gap-6 border-t border-cream/15 pt-5 lg:flex lg:max-w-2xl">
             <dl className="flex gap-8 md:gap-12">
               <div>
                 <dt className="eyebrow text-sand">{s.hero.openDaily}</dt>

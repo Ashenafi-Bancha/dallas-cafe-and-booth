@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig, type MenuItem } from '../data/config';
 import { useLang } from '../i18n';
+import { withPlainAmpersand } from './Ampersand';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
@@ -17,7 +18,7 @@ export function FeaturedMenu() {
           <div>
             <p className="eyebrow mb-5 text-clay">{s.menu.eyebrow}</p>
             <h2 className="font-display text-5xl font-light leading-none tracking-tight sm:text-6xl md:text-7xl">
-              {s.menu.heading.before} <em>{s.menu.heading.accent}</em> {s.menu.heading.after}
+              {s.menu.heading.before} <em>{withPlainAmpersand(s.menu.heading.accent)}</em> {s.menu.heading.after}
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-ink/65">{s.menu.intro}</p>
@@ -54,7 +55,7 @@ export function FeaturedMenu() {
               <Reveal key={category.category.en}>
                 <div className="flex items-baseline gap-4 border-b border-ink pb-4">
                   <span className="text-xs font-medium text-clay">0{i + 1}</span>
-                  <h3 className="font-display text-3xl italic md:text-4xl">{t(category.category)}</h3>
+                  <h3 className="font-display text-3xl italic md:text-4xl">{withPlainAmpersand(t(category.category))}</h3>
                 </div>
                 <ul>
                   {category.items.map((item) => (

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { PhotoName } from '../data/config';
 import { useLang } from '../i18n';
+import { withPlainAmpersand } from './Ampersand';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
@@ -49,7 +50,7 @@ export function GallerySection() {
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-ink/80 to-transparent" />
                 <figcaption className="absolute bottom-4 left-4 flex items-baseline gap-3">
                   <span className="text-xs text-gold">0{i + 1}</span>
-                  <span className="font-display text-lg italic">{s.gallery.items[i].caption}</span>
+                  <span className="font-display text-lg italic">{withPlainAmpersand(s.gallery.items[i].caption)}</span>
                 </figcaption>
               </figure>
             </Reveal>
