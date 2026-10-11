@@ -33,7 +33,8 @@ for (const file of await readdir(SRC)) {
 }
 
 // Link-preview image for social sharing; JPEG because not every app reads WebP previews
-await sharp(path.join(SRC, 'hero.jpg'))
+await sharp(path.join(SRC, 'cafe_day.png'))
+  .extract({ left: 0, top: 560, width: 1086, height: 570 }) // the pavilion and its sign
   .resize({ width: 1200, height: 630, fit: 'cover' })
   .jpeg({ quality: 82 })
   .toFile('public/og.jpg');

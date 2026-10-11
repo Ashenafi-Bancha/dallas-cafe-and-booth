@@ -6,12 +6,13 @@ import { Reveal } from './Reveal';
 
 // Captions and alt text come from strings.ts, in this same order.
 // `shape` is the photo's proportion on phones, where the photos stack one per row.
-const gallery: { photo: PhotoName; shape: string; layout: string }[] = [
-  { photo: 'hero', shape: 'aspect-[16/10]', layout: 'md:col-span-8 md:h-[30rem]' },
-  { photo: 'macchiato', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[30rem]' },
+// `focus` keeps the subject in frame when a tall photo is cropped to a wide slot.
+const gallery: { photo: PhotoName; shape: string; layout: string; focus?: string }[] = [
+  { photo: 'cafe_day', shape: 'aspect-[4/3]', layout: 'md:col-span-8 md:h-[30rem]', focus: 'object-[50%_62%]' },
+  { photo: 'coffee_ceremony', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[30rem]', focus: 'object-[50%_30%]' },
+  { photo: 'macchiato', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
   { photo: 'snacks', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
   { photo: 'avocado_juice', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
-  { photo: 'burger', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
 ];
 
 export function GallerySection() {
@@ -40,7 +41,10 @@ export function GallerySection() {
                   name={img.photo}
                   alt={s.gallery.items[i].alt}
                   sizes="(min-width: 768px) 60vw, 100vw"
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  className={clsx(
+                    'h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105',
+                    img.focus
+                  )}
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-ink/80 to-transparent" />
                 <figcaption className="absolute bottom-4 left-4 flex items-baseline gap-3">

@@ -5,7 +5,7 @@ type Heading = { before: string; accent: string; after?: string };
 
 type Strings = {
   meta: { title: string; description: string };
-  nav: { story: string; menu: string; gallery: string; visit: string; home: string; cta: string; openMenu: string; closeMenu: string; language: string };
+  nav: { story: string; menu: string; play: string; gallery: string; visit: string; home: string; cta: string; openMenu: string; closeMenu: string; language: string };
   hero: {
     eyebrow: string;
     heading: Heading;
@@ -28,6 +28,13 @@ type Strings = {
     photoAlt: string;
   };
   menu: { eyebrow: string; heading: Heading; intro: string; hoverHint: string; sampleNote: string };
+  play: {
+    eyebrow: string;
+    heading: Heading;
+    body: string;
+    note: string;
+    items: { caption: string; alt: string }[];
+  };
   gallery: {
     eyebrow: string;
     heading: Heading;
@@ -57,12 +64,13 @@ type Strings = {
 export const strings: Record<Lang, Strings> = {
   en: {
     meta: {
-      title: 'Dallas Cafe & Booth | Wolaita Sodo',
-      description: 'Discover great coffee, delicious bites, and a welcoming atmosphere at Dallas Cafe & Booth in Wolaita Sodo.',
+      title: 'Dallas Café & Booth | Wolaita Sodo',
+      description: 'Discover great coffee, delicious bites, and a welcoming atmosphere at Dallas Café & Booth in Wolaita Sodo.',
     },
     nav: {
       story: 'Our Story',
       menu: 'Menu',
+      play: 'Kids',
       gallery: 'Gallery',
       visit: 'Visit',
       home: 'Home',
@@ -74,21 +82,21 @@ export const strings: Record<Lang, Strings> = {
     hero: {
       eyebrow: 'Wolaita Sodo, Ethiopia',
       heading: { before: 'Where coffee is still a', accent: 'ceremony.' },
-      intro: 'Great coffee, fresh bites and an unhurried table at Dallas Cafe & Booth, in the heart of Wolaita Sodo.',
+      intro: 'Great coffee, fresh bites and an unhurried table at Dallas Café & Booth, in the heart of Wolaita Sodo.',
       primaryCta: 'Explore the menu',
-      secondaryCta: 'Find the cafe',
+      secondaryCta: 'Find the café',
       openDaily: 'Open daily',
       openFrom: 'From 6:00 AM',
-      kind: 'Cafe & snack house',
+      kind: 'Café & snack house',
       offer: 'Coffee, juice & bites',
       scroll: 'Scroll',
-      photoAlt: 'Coffee being poured from a jebena into small cups during an Ethiopian coffee ceremony',
+      photoAlt: 'The Dallas Café garden pavilion lit up at night, with guests at the tables',
       marquee: ['Buna', 'Macchiato', 'Spiced tea', 'Sambusa', 'Fresh pastry', 'Avocado juice', 'Mango splash'],
     },
     about: {
       eyebrow: 'Our story',
       heading: { before: 'More than coffee.', accent: 'A place to connect.' },
-      body: 'Every great café experience starts with a warm welcome. Dallas Cafe & Booth brings together the pleasure of good coffee, satisfying snacks, and a comfortable atmosphere where people can relax, connect, and enjoy the moment in the heart of Wolaita Sodo.',
+      body: 'Every great café experience starts with a warm welcome. Dallas Café & Booth brings together the pleasure of good coffee, satisfying snacks, and a comfortable atmosphere where people can relax, connect, and enjoy the moment in the heart of Wolaita Sodo.',
       caption: 'The jebena, at the centre of the table',
       photoAlt: 'A clay jebena on a woven mat beside a small cup of freshly poured coffee',
     },
@@ -99,16 +107,28 @@ export const strings: Record<Lang, Strings> = {
       hoverHint: 'Hover the menu',
       sampleNote: '* Menu items and prices shown are sample data pending owner verification.',
     },
+    play: {
+      eyebrow: 'For the little ones',
+      heading: { before: 'Room to', accent: 'play.' },
+      body: 'While you enjoy your coffee, the children have a garden of their own. Our grassy outdoor play area has an inflatable bouncy castle with its own slide, a netted trampoline, a seesaw, and a climbing frame with tube and wave slides. Bring the whole family: the grown-ups get an unhurried table, and the kids get space to run.',
+      note: 'Children should be supervised by a parent or guardian while they play.',
+      items: [
+        { caption: 'Bouncy castle', alt: 'A colourful inflatable bouncy castle with a slide, set on the grass' },
+        { caption: 'Trampoline', alt: 'A round trampoline with a safety net on the lawn' },
+        { caption: 'Slides & climbing frame', alt: 'A climbing frame with a tube slide and a yellow wave slide' },
+        { caption: 'Seesaw', alt: 'A yellow four-seat seesaw with red seats on the grass' },
+      ],
+    },
     gallery: {
       eyebrow: 'Gallery',
       heading: { before: 'The Dallas', accent: 'experience' },
       intro: 'A glimpse into our welcoming space and delicious offerings.',
       items: [
-        { caption: 'The room', alt: 'Dallas Cafe interior with guests at wooden tables' },
+        { caption: 'The garden pavilion', alt: 'The Dallas Café pavilion with teal and white curtains, set in a garden under a blue sky' },
+        { caption: 'Buna', alt: 'Coffee being poured from a jebena into small cups during an Ethiopian coffee ceremony' },
         { caption: 'Macchiato', alt: 'A layered macchiato in a glass cup' },
         { caption: 'Snacks & pastry', alt: 'A plate of sambusa and pastries' },
         { caption: 'Fresh juice', alt: 'A layered avocado and mango juice' },
-        { caption: 'Special burger', alt: 'A burger served with fries' },
       ],
     },
     visit: {
@@ -125,7 +145,7 @@ export const strings: Record<Lang, Strings> = {
       directions: 'Get directions',
       mapSoon: 'Map coming soon',
       mapSoonBody: 'We are confirming our exact pin in Wolaita Sodo and will add the map here.',
-      mapTitle: 'Map showing Dallas Cafe & Booth',
+      mapTitle: 'Map showing Dallas Café & Booth',
     },
     social: { followUs: 'Follow us', soon: 'link coming soon' },
     footer: {
@@ -145,6 +165,7 @@ export const strings: Record<Lang, Strings> = {
     nav: {
       story: 'ታሪካችን',
       menu: 'ሜኑ',
+      play: 'ለልጆች',
       gallery: 'ምስሎች',
       visit: 'ይጎብኙን',
       home: 'መነሻ',
@@ -164,7 +185,7 @@ export const strings: Record<Lang, Strings> = {
       kind: 'ካፌ እና መክሰስ ቤት',
       offer: 'ቡና፣ ጭማቂ እና መክሰስ',
       scroll: 'ወደ ታች',
-      photoAlt: 'በኢትዮጵያ የቡና ሥነ ሥርዓት ላይ ቡና ከጀበና ወደ ሲኒዎች ሲቀዳ',
+      photoAlt: 'በምሽት መብራት የደመቀው የዳላስ ካፌ የአትክልት ስፍራ ዳስ፣ እንግዶች በጠረጴዛዎች ላይ',
       marquee: ['ቡና', 'ማኪያቶ', 'የቅመም ሻይ', 'ሳምቡሳ', 'ትኩስ ፓስትሪ', 'የአቮካዶ ጭማቂ', 'የማንጎ ጭማቂ'],
     },
     about: {
@@ -181,16 +202,28 @@ export const strings: Record<Lang, Strings> = {
       hoverHint: 'ዝርዝሩን ይዳስሱ',
       sampleNote: '* የሚታዩት የሜኑ ዝርዝሮች እና ዋጋዎች ናሙና ናቸው፤ በባለቤቱ ገና አልተረጋገጡም።',
     },
+    play: {
+      eyebrow: 'ለትንንሾቹ',
+      heading: { before: 'የልጆች', accent: 'መጫወቻ ስፍራ።' },
+      body: 'እርስዎ ቡናዎን ሲያጣጥሙ፣ ልጆችዎ የራሳቸው የመጫወቻ ሜዳ አላቸው። በሣር የተሸፈነው የውጪ መጫወቻ ስፍራችን ሸርተቴ ያለው በአየር የሚነፋ መዝለያ ቤት፣ በመረብ የተከበበ ትራምፖሊን፣ የሚዛን መጫወቻ እና የተለያዩ ሸርተቴዎች ያሉት መወጣጫ አለው። ቤተሰብዎን ሙሉ ይዘው ይምጡ፤ ትልልቆቹ በእርጋታ ይቀመጣሉ፣ ልጆቹ ደግሞ የሚቦርቁበት ቦታ ያገኛሉ።',
+      note: 'ልጆች በሚጫወቱበት ጊዜ የወላጅ ወይም የአሳዳጊ ክትትል ያስፈልጋል።',
+      items: [
+        { caption: 'የአየር መዝለያ ቤት', alt: 'በሣር ላይ የተቀመጠ ሸርተቴ ያለው ባለቀለም የአየር መዝለያ ቤት' },
+        { caption: 'ትራምፖሊን', alt: 'በሣር ሜዳ ላይ የተቀመጠ የመከላከያ መረብ ያለው ክብ ትራምፖሊን' },
+        { caption: 'ሸርተቴዎች እና መወጣጫ', alt: 'የቱቦ ሸርተቴ እና ቢጫ ሸርተቴ ያለው የልጆች መወጣጫ' },
+        { caption: 'የሚዛን መጫወቻ', alt: 'በሣር ላይ የተቀመጠ ቀይ መቀመጫዎች ያሉት ቢጫ የሚዛን መጫወቻ' },
+      ],
+    },
     gallery: {
       eyebrow: 'ምስሎች',
       heading: { before: 'የዳላስ', accent: 'ቆይታ' },
       intro: 'ስለ ሞቅ ያለ ስፍራችን እና ጣፋጭ አቅርቦቶቻችን ጥቂት እይታ።',
       items: [
-        { caption: 'ቤታችን', alt: 'የዳላስ ካፌ ውስጠኛ ክፍል፣ እንግዶች በእንጨት ጠረጴዛዎች ላይ' },
+        { caption: 'የአትክልት ስፍራው ዳስ', alt: 'በሰማያዊ ሰማይ ስር በአትክልት ስፍራ ውስጥ የሚገኘው ባለ መጋረጃ የዳላስ ካፌ ዳስ' },
+        { caption: 'ቡና', alt: 'በኢትዮጵያ የቡና ሥነ ሥርዓት ላይ ቡና ከጀበና ወደ ሲኒዎች ሲቀዳ' },
         { caption: 'ማኪያቶ', alt: 'በብርጭቆ ሲኒ የቀረበ ማኪያቶ' },
         { caption: 'መክሰስ እና ፓስትሪ', alt: 'ሳምቡሳ እና ፓስትሪ የያዘ ሳህን' },
         { caption: 'ትኩስ ጭማቂ', alt: 'የአቮካዶ እና የማንጎ ጭማቂ' },
-        { caption: 'ስፔሻል በርገር', alt: 'ከድንች ጥብስ ጋር የቀረበ በርገር' },
       ],
     },
     visit: {

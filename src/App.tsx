@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { FeaturedMenu } from './components/FeaturedMenu';
+import { PlaySection } from './components/PlaySection';
 import { GallerySection } from './components/GallerySection';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
@@ -18,6 +19,7 @@ function App() {
             <HeroSection />
             <AboutSection />
             <FeaturedMenu />
+            <PlaySection />
             <GallerySection />
             <LocationSection />
           </main>

@@ -94,6 +94,7 @@ export function Navbar() {
   const navLinks = [
     { name: s.nav.story, href: '#about' },
     { name: s.nav.menu, href: '#menu' },
+    { name: s.nav.play, href: '#play' },
     { name: s.nav.gallery, href: '#gallery' },
     { name: s.nav.visit, href: '#contact' },
   ];
@@ -200,7 +201,7 @@ export function Navbar() {
                 >
                   <a
                     href={link.href}
-                    className="flex items-baseline justify-between py-5 font-display text-4xl text-cream"
+                    className="flex items-baseline justify-between py-4 font-display text-4xl text-cream"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}

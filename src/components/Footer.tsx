@@ -9,6 +9,7 @@ export function Footer() {
     { name: s.nav.home, href: '#home' },
     { name: s.nav.story, href: '#about' },
     { name: s.nav.menu, href: '#menu' },
+    { name: s.nav.play, href: '#play' },
     { name: s.nav.gallery, href: '#gallery' },
     { name: s.nav.visit, href: '#contact' },
   ];
@@ -83,7 +84,7 @@ export function Footer() {
       {/* Oversized wordmark */}
       <p
         aria-hidden="true"
-        className="mt-8 select-none text-center font-display text-[27vw] font-light leading-[0.8] tracking-tight text-cream/[0.07] md:text-[24vw]"
+        className="mt-8 select-none whitespace-nowrap text-center font-display text-[16.5vw] font-light leading-none tracking-tight text-cream/[0.07] [html[lang=am]_&]:text-[19vw]"
       >
         {t(siteConfig.shortName)}
       </p>

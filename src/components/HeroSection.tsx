@@ -24,11 +24,11 @@ export function HeroSection() {
             className="h-full w-full"
           >
             <Photo
-              name="coffee_ceremony"
+              name="cafe_night"
               alt={s.hero.photoAlt}
               sizes="(min-width: 1024px) 50vw, 100vw"
               eager
-              className="h-full w-full object-cover object-[50%_22%]"
+              className="h-full w-full object-cover object-[50%_60%]"
             />
           </motion.div>
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink lg:via-ink/35 lg:via-30% lg:to-transparent" />

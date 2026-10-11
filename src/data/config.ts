@@ -10,6 +10,8 @@ export const photos = {
   avocado_juice: { width: 896, height: 1200 },
   bombolino: { width: 900, height: 1200 },
   burger: { width: 896, height: 1200 },
+  cafe_day: { width: 1086, height: 1448 },
+  cafe_night: { width: 1086, height: 1448 },
   cake: { width: 900, height: 1200 },
   cappuccino: { width: 900, height: 1200 },
   club_sandwich: { width: 900, height: 1200 },
@@ -19,7 +21,6 @@ export const photos = {
   ethiopian_coffee: { width: 896, height: 1200 },
   fries: { width: 900, height: 1200 },
   ginger_tea: { width: 900, height: 1200 },
-  hero: { width: 1376, height: 768 },
   hot_milk: { width: 900, height: 1200 },
   iced_coffee: { width: 900, height: 1200 },
   latte: { width: 900, height: 1200 },
@@ -27,6 +28,10 @@ export const photos = {
   mango: { width: 900, height: 1200 },
   milk_tea: { width: 900, height: 1200 },
   papaya: { width: 900, height: 1200 },
+  play_castle: { width: 1088, height: 1445 },
+  play_seesaw: { width: 1160, height: 1356 },
+  play_slides: { width: 1086, height: 1448 },
+  play_trampoline: { width: 1086, height: 1449 },
   peanut_tea: { width: 900, height: 1200 },
   pineapple: { width: 900, height: 1200 },
   sambusa: { width: 900, height: 1200 },
@@ -81,9 +86,10 @@ type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  name: { en: "Dallas Cafe & Booth", am: "ዳላስ ካፌ እና ቡዝ" },
-  shortName: { en: "Dallas", am: "ዳላስ" },
-  descriptor: { en: "Cafe & Booth", am: "ካፌ እና ቡዝ" },
+  // Spelled as on the signboard and logo
+  name: { en: "Dallas Café & Booth", am: "ዳላስ ካፌ እና ቡዝ" },
+  shortName: { en: "Dallas Café", am: "ዳላስ ካፌ" },
+  descriptor: { en: "& Booth", am: "እና ቡዝ" },
   city: { en: "Wolaita Sodo", am: "ወላይታ ሶዶ" },
   location: { en: "Wolaita Sodo, South Ethiopia, Ethiopia", am: "ወላይታ ሶዶ፣ ደቡብ ኢትዮጵያ፣ ኢትዮጵያ" },
   currency: { en: "ETB", am: "ብር" },
