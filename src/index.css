@@ -11,7 +11,7 @@
   --color-clay: #B5532C;
 
   --font-sans: "DM Sans", "Noto Sans Ethiopic", system-ui, -apple-system, sans-serif;
-  --font-display: "Fraunces", "Noto Serif Ethiopic", Georgia, "Times New Roman", serif;
+  --font-display: "EB Garamond", "Noto Serif Ethiopic", Georgia, "Times New Roman", serif;
 
   --animate-marquee: marquee 45s linear infinite;
 
@@ -90,6 +90,12 @@ section[id] {
   }
 }
 
+/* Section headings are set in Garamond italic, a touch heavier than the body weight */
+:is(h1, h2) {
+  font-style: italic;
+  font-weight: 500;
+}
+
 /* Amharic: Ethiopic script has no capitals or italics and sits taller than Latin,
    so loosen the tight heading leading and drop the wide tracking and slant. */
 html[lang="am"] :is(h1, h2) {
@@ -103,7 +109,7 @@ html[lang="am"] h1 {
 html[lang="am"] h2 {
   font-size: clamp(2rem, 4vw, 3.25rem);
 }
-html[lang="am"] :is(em, .italic) {
+html[lang="am"] :is(h1, h2, em, .italic) {
   font-style: normal;
 }
 html[lang="am"] .eyebrow {
