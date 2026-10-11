@@ -7,7 +7,13 @@ import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
 
-const slides: PhotoName[] = ['cafe_night', 'cafe_day', 'play_castle', 'play_slides'];
+// `focus` keeps each photo's subject in frame on desktop, where the photo fills the whole hero
+const slides: { photo: PhotoName; focus: string }[] = [
+  { photo: 'cafe_night', focus: 'lg:object-[50%_62%]' },
+  { photo: 'cafe_day', focus: 'lg:object-[50%_64%]' },
+  { photo: 'play_castle', focus: 'lg:object-[50%_68%]' },
+  { photo: 'play_slides', focus: 'lg:object-[50%_66%]' },
+];
 
 const SLIDE_INTERVAL_MS = 5500;
 
@@ -43,8 +49,8 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow behind the text. Each photo is shown whole, never cropped,
-            over a blurred copy of itself that fills the rest of the hero. */}
+        {/* Photo slideshow behind the text. On desktop each photo fills the hero edge to edge.
+            On phones it is shown whole across the top, over a blurred copy of itself. */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
@@ -54,7 +60,7 @@ export function HeroSection() {
             className="relative h-full w-full"
           >
             {/* The current slide sits in view, the one before it leaves to the left, the rest wait on the right */}
-            {slides.map((photo, i) => {
+            {slides.map(({ photo, focus }, i) => {
               const isCurrent = i === slide.current;
               const isLeaving = i === slide.previous;
               return (
@@ -75,20 +81,23 @@ export function HeroSection() {
                   >
                     <Photo name={photo} alt="" sizes="200px" className="h-full w-full object-cover blur-2xl brightness-75" />
                   </motion.div>
-                  {/* The whole photo: across the top below the header on phones, down the right side on desktop */}
                   <Photo
                     name={photo}
                     alt={slideAlts[i]}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    sizes="100vw"
                     eager={i === 0}
-                    className="absolute inset-x-0 top-[4.5rem] h-[calc(100%-4.5rem)] w-full object-contain object-top lg:top-20 lg:h-[calc(100%-5rem)] lg:object-right"
+                    className={clsx(
+                      'absolute inset-x-0 top-[4.5rem] h-[calc(100%-4.5rem)] w-full object-contain object-top lg:top-0 lg:h-full lg:object-cover',
+                      focus
+                    )}
                   />
                 </motion.div>
               );
             })}
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink from-20% via-ink/70 via-50% to-transparent to-75% lg:bg-linear-to-r lg:from-ink/90 lg:from-0% lg:via-ink/55 lg:via-35% lg:to-transparent lg:to-55%" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-20% via-ink/70 via-50% to-transparent to-75% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-44 bg-linear-to-t from-ink/75 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
@@ -97,7 +106,7 @@ export function HeroSection() {
           <span className="mr-3 hidden text-xs tabular-nums text-cream/70 lg:inline">
             0{slide.current + 1} / 0{slides.length}
           </span>
-          {slides.map((photo, i) => (
+          {slides.map(({ photo }, i) => (
             <button
               key={photo}
               onClick={() => goToSlide(i)}
@@ -116,12 +125,12 @@ export function HeroSection() {
         </div>
 
         <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">
-          <div className="lg:max-w-[46%]">
+          <div className="lg:max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: easeOut }}
-              className="eyebrow mb-5 flex items-center gap-3 text-gold md:mb-7"
+              className="eyebrow mb-4 flex items-center gap-3 font-semibold text-white [text-shadow:0_1px_12px_rgb(18_14_11/0.95)] md:mb-7"
             >
               <span className="h-px w-8 bg-gold" />
               {s.hero.eyebrow}
@@ -131,16 +140,16 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[3.1rem] font-light leading-[0.98] tracking-tight text-balance sm:text-7xl lg:text-6xl xl:text-[5.5rem]"
+              className="font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight text-balance text-white [text-shadow:0_2px_24px_rgb(18_14_11/0.65)] sm:text-6xl xl:text-[5rem]"
             >
-              {s.hero.heading.before} <em className="whitespace-nowrap text-gold">{s.hero.heading.accent}</em> {s.hero.heading.after}
+              {s.hero.heading.before} <em>{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.7, ease: easeOut }}
-              className="mt-5 max-w-md text-base leading-relaxed text-cream/75 md:mt-8 md:text-lg"
+              className="mt-5 max-w-md text-base leading-relaxed text-cream/75 md:mt-8 md:text-lg lg:text-cream/90 lg:[text-shadow:0_1px_16px_rgb(18_14_11/0.7)]"
             >
               {s.hero.intro}
             </motion.p>
@@ -206,7 +215,7 @@ export function HeroSection() {
             </ul>
           </nav>
 
-          <div className="hidden items-end justify-between gap-6 border-t border-cream/15 pt-5 lg:flex lg:max-w-[46%]">
+          <div className="hidden items-end justify-between gap-6 border-t border-cream/25 pt-5 lg:flex lg:max-w-2xl">
             <dl className="flex gap-8 md:gap-12">
               <div>
                 <dt className="eyebrow text-sand">{s.hero.openDaily}</dt>
