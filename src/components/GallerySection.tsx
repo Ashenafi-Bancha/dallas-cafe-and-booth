@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type { PhotoName } from '../data/config';
 import { useLang } from '../i18n';
 import { withPlainAmpersand } from './Ampersand';
@@ -6,15 +5,7 @@ import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
 // Captions and alt text come from strings.ts, in this same order.
-// `shape` is the photo's proportion on phones, where the photos stack one per row.
-// `focus` keeps the subject in frame when a tall photo is cropped to a wide slot.
-const gallery: { photo: PhotoName; shape: string; layout: string; focus?: string }[] = [
-  { photo: 'cafe_day', shape: 'aspect-[4/3]', layout: 'md:col-span-8 md:h-[30rem]', focus: 'object-[50%_62%]' },
-  { photo: 'coffee_ceremony', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[30rem]', focus: 'object-[50%_30%]' },
-  { photo: 'macchiato', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
-  { photo: 'snacks', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
-  { photo: 'avocado_juice', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
-];
+const gallery: PhotoName[] = ['cafe_day', 'coffee_ceremony', 'macchiato', 'snacks', 'avocado_juice'];
 
 export function GallerySection() {
   const { s } = useLang();
@@ -33,22 +24,19 @@ export function GallerySection() {
           <p className="max-w-xs text-sm leading-relaxed text-cream/65">{s.gallery.intro}</p>
         </Reveal>
 
-        {/* One photo per row on phones, editorial grid on desktop */}
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-4">
-          {gallery.map((img, i) => (
-            <Reveal key={img.photo} delay={(i % 3) * 0.08} className={img.layout}>
-              <figure className={clsx('group relative h-full w-full overflow-hidden md:aspect-auto', img.shape)}>
+        {/* Every photo keeps its own proportions, so nothing is cropped.
+            One per row on phones, a single row of five on desktop. */}
+        <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
+          {gallery.map((photo, i) => (
+            <Reveal key={photo} delay={(i % 3) * 0.08}>
+              <figure>
                 <Photo
-                  name={img.photo}
+                  name={photo}
                   alt={s.gallery.items[i].alt}
-                  sizes="(min-width: 768px) 60vw, 100vw"
-                  className={clsx(
-                    'h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105',
-                    img.focus
-                  )}
+                  sizes="(min-width: 1024px) 20vw, (min-width: 768px) 33vw, 100vw"
+                  className="h-auto w-full"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-ink/80 to-transparent" />
-                <figcaption className="absolute bottom-4 left-4 flex items-baseline gap-3">
+                <figcaption className="mt-3 flex items-baseline gap-3">
                   <span className="text-xs text-gold">0{i + 1}</span>
                   <span className="font-display text-lg italic">{withPlainAmpersand(s.gallery.items[i].caption)}</span>
                 </figcaption>

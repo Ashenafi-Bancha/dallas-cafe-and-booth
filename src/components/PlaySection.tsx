@@ -25,18 +25,16 @@ export function PlaySection() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-3 md:mt-16 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-3 md:mt-16 items-start md:grid-cols-2 md:gap-4 lg:grid-cols-4">
           {playPhotos.map((photo, i) => (
             <Reveal key={photo} delay={(i % 2) * 0.08}>
               <figure>
-                <div className="group aspect-[4/5] overflow-hidden">
-                  <Photo
-                    name={photo}
-                    alt={s.play.items[i].alt}
-                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                  />
-                </div>
+                <Photo
+                  name={photo}
+                  alt={s.play.items[i].alt}
+                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  className="h-auto w-full"
+                />
                 <figcaption className="mt-4 flex items-baseline gap-3">
                   <span className="text-xs text-gold">0{i + 1}</span>
                   <span className="font-display text-xl italic">{withPlainAmpersand(s.play.items[i].caption)}</span>

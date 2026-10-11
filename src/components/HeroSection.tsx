@@ -1,19 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import clsx from 'clsx';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, Baby, BookOpen, Images, MapPin, UtensilsCrossed } from 'lucide-react';
 import type { PhotoName } from '../data/config';
 import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
 
-// `focus` keeps each photo's subject in frame when it is cropped to the hero
-const slides: { photo: PhotoName; focus: string }[] = [
-  { photo: 'cafe_night', focus: 'object-[50%_60%]' },
-  { photo: 'cafe_day', focus: 'object-[50%_62%]' },
-  { photo: 'play_castle', focus: 'object-[50%_65%]' },
-  { photo: 'play_slides', focus: 'object-[50%_65%]' },
-];
+const slides: PhotoName[] = ['cafe_night', 'cafe_day', 'play_castle', 'play_slides'];
 
 const SLIDE_INTERVAL_MS = 5500;
 
@@ -33,6 +27,14 @@ export function HeroSection() {
     return () => clearTimeout(timer);
   }, [slide.current, reduceMotion]);
 
+  const quickLinks = [
+    { name: s.nav.menu, href: '#menu', icon: UtensilsCrossed },
+    { name: s.nav.play, href: '#play', icon: Baby },
+    { name: s.nav.gallery, href: '#gallery', icon: Images },
+    { name: s.nav.story, href: '#about', icon: BookOpen },
+    { name: s.nav.visit, href: '#contact', icon: MapPin },
+  ];
+
   const slideAlts = [s.hero.photoAlt, s.gallery.items[0].alt, s.play.items[0].alt, s.play.items[2].alt];
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
@@ -41,7 +43,8 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow, full-bleed behind the text */}
+        {/* Photo slideshow behind the text. Each photo is shown whole, never cropped,
+            over a blurred copy of itself that fills the rest of the hero. */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
@@ -51,7 +54,7 @@ export function HeroSection() {
             className="relative h-full w-full"
           >
             {/* The current slide sits in view, the one before it leaves to the left, the rest wait on the right */}
-            {slides.map(({ photo, focus }, i) => {
+            {slides.map((photo, i) => {
               const isCurrent = i === slide.current;
               const isLeaving = i === slide.previous;
               return (
@@ -63,37 +66,38 @@ export function HeroSection() {
                   aria-hidden={!isCurrent}
                   className="absolute inset-0"
                 >
-                  {/* A slow drift towards the viewer while the slide is up */}
+                  {/* Blurred backdrop, drifting slowly while the slide is up */}
                   <motion.div
                     initial={false}
-                    animate={{ scale: isCurrent ? 1.08 : 1 }}
+                    animate={{ scale: isCurrent ? 1.25 : 1.15 }}
                     transition={{ duration: isCurrent ? 8 : 0, ease: 'linear' }}
-                    className="h-full w-full"
+                    className="absolute inset-0"
                   >
-                    <Photo
-                      name={photo}
-                      alt={slideAlts[i]}
-                      sizes="100vw"
-                      eager={i === 0}
-                      className={clsx('h-full w-full object-cover', focus)}
-                    />
+                    <Photo name={photo} alt="" sizes="200px" className="h-full w-full object-cover blur-2xl brightness-75" />
                   </motion.div>
+                  {/* The whole photo: across the top below the header on phones, down the right side on desktop */}
+                  <Photo
+                    name={photo}
+                    alt={slideAlts[i]}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    eager={i === 0}
+                    className="absolute inset-x-0 top-[4.5rem] h-[calc(100%-4.5rem)] w-full object-contain object-top lg:top-20 lg:h-[calc(100%-5rem)] lg:object-right"
+                  />
                 </motion.div>
               );
             })}
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink/95 lg:via-ink/60 lg:via-45% lg:to-ink/10" />
-          <div className="absolute inset-x-0 bottom-0 hidden h-56 bg-linear-to-t from-ink/85 to-transparent lg:block" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-20% via-ink/70 via-50% to-transparent to-75% lg:bg-linear-to-r lg:from-ink/90 lg:from-0% lg:via-ink/55 lg:via-35% lg:to-transparent lg:to-55%" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
         {/* Slide picker */}
-        <div className="absolute right-3 top-24 z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
+        <div className="absolute right-3 top-[4.75rem] z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
           <span className="mr-3 hidden text-xs tabular-nums text-cream/70 lg:inline">
             0{slide.current + 1} / 0{slides.length}
           </span>
-          {slides.map(({ photo }, i) => (
+          {slides.map((photo, i) => (
             <button
               key={photo}
               onClick={() => goToSlide(i)}
@@ -112,7 +116,7 @@ export function HeroSection() {
         </div>
 
         <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">
-          <div className="lg:max-w-3xl">
+          <div className="lg:max-w-[46%]">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -127,7 +131,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[3.1rem] font-light leading-[0.98] tracking-tight text-balance sm:text-7xl xl:text-[5.5rem]"
+              className="font-display text-[3.1rem] font-light leading-[0.98] tracking-tight text-balance sm:text-7xl lg:text-6xl xl:text-[5.5rem]"
             >
               {s.hero.heading.before} <em className="whitespace-nowrap text-gold">{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
@@ -185,7 +189,24 @@ export function HeroSection() {
             <span className="eyebrow">{s.hero.scrollExplore}</span>
           </a>
 
-          <div className="hidden items-end justify-between gap-6 border-t border-cream/15 pt-5 lg:flex lg:max-w-2xl">
+          {/* Phones: shortcuts to each section */}
+          <nav aria-label={s.footer.explore} className="mt-6 lg:hidden">
+            <ul className="grid grid-cols-5 gap-2">
+              {quickLinks.map(({ name, href, icon: Icon }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="flex flex-col items-center gap-1.5 rounded-xl border border-cream/15 bg-ink/50 px-1 py-2.5 text-[11px] leading-none text-cream/90 backdrop-blur-sm transition-colors active:border-gold active:text-gold"
+                  >
+                    <Icon className="h-[18px] w-[18px] text-gold" strokeWidth={1.5} />
+                    <span className="whitespace-nowrap">{name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="hidden items-end justify-between gap-6 border-t border-cream/15 pt-5 lg:flex lg:max-w-[46%]">
             <dl className="flex gap-8 md:gap-12">
               <div>
                 <dt className="eyebrow text-sand">{s.hero.openDaily}</dt>
