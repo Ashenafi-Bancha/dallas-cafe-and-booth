@@ -29,7 +29,7 @@ type Strings = {
     caption: string;
     photoAlt: string;
   };
-  menu: { eyebrow: string; heading: Heading; intro: string; hoverHint: string; sampleNote: string };
+  menu: { eyebrow: string; heading: Heading; intro: string; hoverHint: string; sampleNote: string; thanks: Heading; thanksNote: string };
   play: {
     eyebrow: string;
     heading: Heading;
@@ -111,6 +111,8 @@ export const strings: Record<Lang, Strings> = {
       intro: 'A carefully chosen selection of drinks and bites, served with love. All prices in ETB.',
       hoverHint: 'Hover the menu',
       sampleNote: '* Menu items and prices shown are sample data pending owner verification.',
+      thanks: { before: 'Thank you', accent: 'for coming.' },
+      thanksNote: 'We hope to see you again soon.',
     },
     play: {
       eyebrow: 'For the little ones',
@@ -209,6 +211,8 @@ export const strings: Record<Lang, Strings> = {
       intro: 'በጥንቃቄ የተመረጡ መጠጦች እና መክሰሶች፣ በፍቅር የሚቀርቡ። ሁሉም ዋጋዎች በብር ናቸው።',
       hoverHint: 'ዝርዝሩን ይዳስሱ',
       sampleNote: '* የሚታዩት የሜኑ ዝርዝሮች እና ዋጋዎች ናሙና ናቸው፤ በባለቤቱ ገና አልተረጋገጡም።',
+      thanks: { before: 'ስለመጡ', accent: 'እናመሰግናለን።' },
+      thanksNote: 'በቅርቡ ደግመው እንደሚጎበኙን ተስፋ እናደርጋለን።',
     },
     play: {
       eyebrow: 'ለትንንሾቹ',
