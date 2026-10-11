@@ -4,13 +4,14 @@ import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
-// Captions and alt text come from strings.ts, in this same order
-const gallery: { photo: PhotoName; layout: string }[] = [
-  { photo: 'hero', layout: 'md:col-span-8 md:h-[30rem]' },
-  { photo: 'macchiato', layout: 'md:col-span-4 md:h-[30rem]' },
-  { photo: 'snacks', layout: 'md:col-span-4 md:h-[26rem]' },
-  { photo: 'avocado_juice', layout: 'md:col-span-4 md:h-[26rem]' },
-  { photo: 'burger', layout: 'md:col-span-4 md:h-[26rem]' },
+// Captions and alt text come from strings.ts, in this same order.
+// `shape` is the photo's proportion on phones, where the photos stack one per row.
+const gallery: { photo: PhotoName; shape: string; layout: string }[] = [
+  { photo: 'hero', shape: 'aspect-[16/10]', layout: 'md:col-span-8 md:h-[30rem]' },
+  { photo: 'macchiato', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[30rem]' },
+  { photo: 'snacks', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
+  { photo: 'avocado_juice', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
+  { photo: 'burger', shape: 'aspect-square', layout: 'md:col-span-4 md:h-[26rem]' },
 ];
 
 export function GallerySection() {
@@ -30,15 +31,15 @@ export function GallerySection() {
           <p className="max-w-xs text-sm leading-relaxed text-cream/65">{s.gallery.intro}</p>
         </Reveal>
 
-        {/* Swipeable strip on mobile, editorial grid on desktop */}
-        <Reveal className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:px-0">
+        {/* One photo per row on phones, editorial grid on desktop */}
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-4">
           {gallery.map((img, i) => (
-            <div key={img.photo} className={clsx('w-[78vw] shrink-0 snap-center md:w-auto', img.layout)}>
-              <figure className="group relative aspect-[4/5] h-full w-full overflow-hidden md:aspect-auto">
+            <Reveal key={img.photo} delay={(i % 3) * 0.08} className={img.layout}>
+              <figure className={clsx('group relative h-full w-full overflow-hidden md:aspect-auto', img.shape)}>
                 <Photo
                   name={img.photo}
                   alt={s.gallery.items[i].alt}
-                  sizes="(min-width: 768px) 60vw, 78vw"
+                  sizes="(min-width: 768px) 60vw, 100vw"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-ink/80 to-transparent" />
@@ -47,9 +48,9 @@ export function GallerySection() {
                   <span className="font-display text-lg italic">{s.gallery.items[i].caption}</span>
                 </figcaption>
               </figure>
-            </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -97,15 +97,6 @@ html[lang="am"] .eyebrow {
   letter-spacing: 0.06em;
 }
 
-/* Hide scrollbar for horizontally scrollable elements */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
