@@ -2,7 +2,6 @@ import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '../data/config';
 import { useLang } from '../i18n';
 import { Reveal } from './Reveal';
-import { SocialLinks } from './SocialLinks';
 
 const { contact, openingHours } = siteConfig;
 
@@ -52,12 +51,6 @@ export function LocationSection() {
                   </dd>
                 </Reveal>
               ))}
-              <Reveal delay={0.24} className="grid grid-cols-[6rem_1fr] items-center gap-4 border-t border-cream/15 py-6">
-                <dt className="eyebrow text-sand">{s.social.followUs}</dt>
-                <dd>
-                  <SocialLinks />
-                </dd>
-              </Reveal>
             </dl>
 
             {/* CTA Buttons, shown once the details are confirmed */}
