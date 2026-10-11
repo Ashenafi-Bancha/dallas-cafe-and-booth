@@ -1,37 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import clsx from 'clsx';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Baby, BookOpen, Images, MapPin, UtensilsCrossed } from 'lucide-react';
-import type { PhotoName } from '../data/config';
 import { useLang } from '../i18n';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
 
-// `focus` keeps each photo's subject in frame on desktop, where only a wide band of the tall photo shows
-const slides: { photo: PhotoName; focus: string }[] = [
-  { photo: 'cafe_night', focus: 'lg:object-[50%_62%]' },
-  { photo: 'cafe_day', focus: 'lg:object-[50%_64%]' },
-  { photo: 'play_castle', focus: 'lg:object-[50%_68%]' },
-  { photo: 'play_slides', focus: 'lg:object-[50%_66%]' },
-];
-
-const SLIDE_INTERVAL_MS = 5500;
-
 export function HeroSection() {
   const { s } = useLang();
-  const reduceMotion = useReducedMotion();
-  const [slide, setSlide] = useState({ current: 0, previous: -1 });
-
-  const goToSlide = (next: number) => {
-    setSlide(({ current }) => (next === current ? { current, previous: -1 } : { current: next, previous: current }));
-  };
-
-  // Advance automatically; the timer restarts whenever the slide changes, including by hand
-  useEffect(() => {
-    if (reduceMotion) return;
-    const timer = setTimeout(() => goToSlide((slide.current + 1) % slides.length), SLIDE_INTERVAL_MS);
-    return () => clearTimeout(timer);
-  }, [slide.current, reduceMotion]);
 
   const quickLinks = [
     { name: s.nav.menu, href: '#menu', icon: UtensilsCrossed },
@@ -41,7 +16,6 @@ export function HeroSection() {
     { name: s.nav.visit, href: '#contact', icon: MapPin },
   ];
 
-  const slideAlts = [s.hero.photoAlt, s.gallery.items[0].alt, s.play.items[0].alt, s.play.items[2].alt];
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
   const photoY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
@@ -49,74 +23,28 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow, filling the hero edge to edge behind the text */}
+        {/* The cafe at night, filling the hero edge to edge behind the text */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.6, ease: easeOut }}
             style={{ y: photoY }}
-            className="relative h-full w-full"
+            className="h-full w-full"
           >
-            {/* The current slide sits in view, the one before it leaves to the left, the rest wait on the right */}
-            {slides.map(({ photo, focus }, i) => {
-              const isCurrent = i === slide.current;
-              const isLeaving = i === slide.previous;
-              return (
-                <motion.div
-                  key={photo}
-                  initial={false}
-                  animate={{ x: isCurrent ? '0%' : isLeaving ? '-100%' : '100%' }}
-                  transition={{ duration: isCurrent || isLeaving ? 1.4 : 0, ease: [0.65, 0, 0.35, 1] }}
-                  aria-hidden={!isCurrent}
-                  className="absolute inset-0"
-                >
-                  {/* A slow drift towards the viewer while the slide is up */}
-                  <motion.div
-                    initial={false}
-                    animate={{ scale: isCurrent ? 1.08 : 1 }}
-                    transition={{ duration: isCurrent ? 8 : 0, ease: 'linear' }}
-                    className="h-full w-full"
-                  >
-                    <Photo
-                      name={photo}
-                      alt={slideAlts[i]}
-                      sizes="100vw"
-                      eager={i === 0}
-                      className={clsx('h-full w-full object-cover', focus)}
-                    />
-                  </motion.div>
-                </motion.div>
-              );
-            })}
+            {/* On desktop only a wide band of the tall photo shows, so it is framed on the pavilion */}
+            <Photo
+              name="cafe_night"
+              alt={s.hero.photoAlt}
+              sizes="100vw"
+              eager
+              className="h-full w-full object-cover lg:object-[50%_62%]"
+            />
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
           <div className="absolute inset-0 bg-linear-to-t from-ink from-15% via-ink/75 via-55% to-ink/35 to-100% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
           <div className="absolute inset-x-0 bottom-0 hidden h-44 bg-linear-to-t from-ink/75 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
-        </div>
-
-        {/* Slide picker */}
-        <div className="absolute right-3 top-[4.75rem] z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
-          <span className="mr-3 hidden text-xs tabular-nums text-cream/70 lg:inline">
-            0{slide.current + 1} / 0{slides.length}
-          </span>
-          {slides.map(({ photo }, i) => (
-            <button
-              key={photo}
-              onClick={() => goToSlide(i)}
-              aria-label={`${s.hero.slideLabel} ${i + 1}`}
-              aria-current={i === slide.current}
-              className="group px-1 py-3"
-            >
-              <span
-                className={clsx(
-                  'block h-[3px] rounded-full transition-all duration-500',
-                  i === slide.current ? 'w-8 bg-gold' : 'w-4 bg-cream/45 group-hover:bg-cream'
-                )}
-              />
-            </button>
-          ))}
         </div>
 
         <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">

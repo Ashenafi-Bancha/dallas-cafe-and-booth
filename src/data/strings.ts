@@ -20,7 +20,6 @@ type Strings = {
     scroll: string;
     scrollExplore: string;
     photoAlt: string;
-    slideLabel: string;
     marquee: string[];
   };
   about: {
@@ -96,7 +95,6 @@ export const strings: Record<Lang, Strings> = {
       scroll: 'Scroll',
       scrollExplore: 'Scroll to explore',
       photoAlt: 'The Dallas Café garden pavilion lit up at night, with guests at the tables',
-      slideLabel: 'Show photo',
       marquee: ['Jebena coffee', 'Macchiato', 'Special tea', 'Pizza', 'Burgers', 'Shawarma', 'Fresh juice', 'Ice cream'],
     },
     about: {
@@ -194,7 +192,6 @@ export const strings: Record<Lang, Strings> = {
       scroll: 'ወደ ታች',
       scrollExplore: 'ለማየት ወደ ታች ይሸብልሉ',
       photoAlt: 'በምሽት መብራት የደመቀው የዳላስ ካፌ የአትክልት ስፍራ ዳስ፣ እንግዶች በጠረጴዛዎች ላይ',
-      slideLabel: 'ምስል አሳይ',
       marquee: ['የጀበና ቡና', 'ማኪያቶ', 'እስፔሻል ሻይ', 'ፒዛ', 'በርገር', 'ሸዋርማ', 'ጁስ', 'አይስ ክሬም'],
     },
     about: {
