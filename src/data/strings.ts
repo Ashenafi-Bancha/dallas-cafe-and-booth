@@ -81,8 +81,8 @@ export const strings: Record<Lang, Strings> = {
     },
     hero: {
       eyebrow: 'Wolaita Sodo, Ethiopia',
-      heading: { before: 'Where coffee is still a', accent: 'ceremony.' },
-      intro: 'Great coffee, fresh bites and an unhurried table at Dallas Café & Booth, in the heart of Wolaita Sodo.',
+      heading: { before: 'Coffee in the garden.', accent: 'Play on the grass.' },
+      intro: 'Great coffee, fresh bites and a garden where the children can play, at Dallas Café & Booth in the heart of Wolaita Sodo.',
       primaryCta: 'Explore the menu',
       secondaryCta: 'Find the café',
       openDaily: 'Open daily',
@@ -176,8 +176,8 @@ export const strings: Record<Lang, Strings> = {
     },
     hero: {
       eyebrow: 'ወላይታ ሶዶ፣ ኢትዮጵያ',
-      heading: { before: 'ቡና አሁንም', accent: 'ሥነ ሥርዓት', after: 'የሆነበት ቦታ።' },
-      intro: 'ምርጥ ቡና፣ ትኩስ መክሰስ እና የተረጋጋ ቆይታ፤ በወላይታ ሶዶ እምብርት በሚገኘው ዳላስ ካፌ እና ቡዝ።',
+      heading: { before: 'ቡና በአትክልት ስፍራ።', accent: 'ጨዋታ በሣር ሜዳ።' },
+      intro: 'ምርጥ ቡና፣ ትኩስ መክሰስ እና ልጆች የሚጫወቱበት የአትክልት ስፍራ፤ በወላይታ ሶዶ እምብርት በሚገኘው ዳላስ ካፌ እና ቡዝ።',
       primaryCta: 'ሜኑውን ይመልከቱ',
       secondaryCta: 'ካፌውን ያግኙ',
       openDaily: 'በየቀኑ ክፍት',
