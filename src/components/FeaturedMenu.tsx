@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { UtensilsCrossed } from 'lucide-react';
 import { siteConfig, type MenuItem } from '../data/config';
 import { useLang } from '../i18n';
 import { withPlainAmpersand } from './Ampersand';
@@ -38,7 +39,9 @@ export function FeaturedMenu() {
                     transition={{ duration: 0.6 }}
                     className="absolute inset-0"
                   >
-                    <Photo name={activeItem.photo} alt="" sizes="40vw" className="h-full w-full object-cover" />
+                    {activeItem.photo && (
+                      <Photo name={activeItem.photo} alt="" sizes="40vw" className="h-full w-full object-cover" />
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -61,16 +64,22 @@ export function FeaturedMenu() {
                   {category.items.map((item) => (
                     <li
                       key={item.name.en}
-                      onMouseEnter={() => setActiveItem(item)}
+                      onMouseEnter={() => item.photo && setActiveItem(item)}
                       className="group flex items-center gap-4 border-b border-ink/15 py-4 md:gap-5"
                     >
                       <div className="h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden bg-ink/10 md:h-20 md:w-20">
-                        <Photo
-                          name={item.photo}
-                          alt=""
-                          sizes="80px"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
+                        {item.photo ? (
+                          <Photo
+                            name={item.photo}
+                            alt=""
+                            sizes="80px"
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-ink/35">
+                            <UtensilsCrossed className="h-6 w-6" strokeWidth={1.25} />
+                          </div>
+                        )}
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-baseline">
@@ -85,7 +94,7 @@ export function FeaturedMenu() {
                         </div>
                         {/* The name in the other language, so the menu reads in both */}
                         <p lang={other} className="mt-1 text-sm font-medium text-clay">{item.name[other]}</p>
-                        <p className="mt-1 text-sm text-ink/60">{t(item.description)}</p>
+                        {item.description && <p className="mt-1 text-sm text-ink/60">{t(item.description)}</p>}
                       </div>
                     </li>
                   ))}

@@ -95,7 +95,7 @@ export const strings: Record<Lang, Strings> = {
       scrollExplore: 'Scroll to explore',
       photoAlt: 'The Dallas Café garden pavilion lit up at night, with guests at the tables',
       slideLabel: 'Show photo',
-      marquee: ['Buna', 'Macchiato', 'Spiced tea', 'Sambusa', 'Fresh pastry', 'Avocado juice', 'Mango splash'],
+      marquee: ['Jebena coffee', 'Macchiato', 'Special tea', 'Pizza', 'Burgers', 'Shawarma', 'Fresh juice', 'Ice cream'],
     },
     about: {
       eyebrow: 'Our story',
@@ -192,7 +192,7 @@ export const strings: Record<Lang, Strings> = {
       scrollExplore: 'ለማየት ወደ ታች ይሸብልሉ',
       photoAlt: 'በምሽት መብራት የደመቀው የዳላስ ካፌ የአትክልት ስፍራ ዳስ፣ እንግዶች በጠረጴዛዎች ላይ',
       slideLabel: 'ምስል አሳይ',
-      marquee: ['ቡና', 'ማኪያቶ', 'የቅመም ሻይ', 'ሳምቡሳ', 'ትኩስ ፓስትሪ', 'የአቮካዶ ጭማቂ', 'የማንጎ ጭማቂ'],
+      marquee: ['የጀበና ቡና', 'ማኪያቶ', 'እስፔሻል ሻይ', 'ፒዛ', 'በርገር', 'ሸዋርማ', 'ጁስ', 'አይስ ክሬም'],
     },
     about: {
       eyebrow: 'ታሪካችን',
