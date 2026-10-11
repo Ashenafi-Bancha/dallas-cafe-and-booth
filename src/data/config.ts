@@ -63,6 +63,8 @@ type SiteConfig = {
   // Leave a contact field as null until the owner confirms it; the page shows "coming soon" instead.
   contact: {
     phone: string | null;
+    // The same number in international form, used for the tap-to-call link
+    phoneDial: string | null;
     address: Localized | null;
     email: string | null;
     whatsapp: string | null;
@@ -86,12 +88,14 @@ export const siteConfig: SiteConfig = {
   location: { en: "Wolaita Sodo, South Ethiopia, Ethiopia", am: "ወላይታ ሶዶ፣ ደቡብ ኢትዮጵያ፣ ኢትዮጵያ" },
   currency: { en: "ETB", am: "ብር" },
   contact: {
-    phone: null,
+    phone: "0965 55 15 42",
+    phoneDial: "+251965551542",
     address: null,
     email: null,
     whatsapp: null,
-    mapsUrl: null,
-    mapsEmbedUrl: null,
+    // Pin at 6.824523, 37.751629
+    mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=6.824523,37.751629",
+    mapsEmbedUrl: "https://www.google.com/maps?q=6.824523,37.751629&z=16&output=embed",
   },
   openingHours: {
     weekdays: { en: "6:00 AM – 10:00 PM", am: "ጠዋት 12:00 – ምሽት 4:00" },

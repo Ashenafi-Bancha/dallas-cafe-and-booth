@@ -51,7 +51,28 @@ export function Footer() {
             <h4 className="eyebrow mb-5 text-sand">{s.footer.findUs}</h4>
             <ul className="space-y-2.5 text-sm text-cream/75">
               <li>{t(siteConfig.location)}</li>
-              {siteConfig.contact.phone && <li>{siteConfig.contact.phone}</li>}
+              {siteConfig.contact.phone && (
+                <li>
+                  <a
+                    href={`tel:${siteConfig.contact.phoneDial ?? siteConfig.contact.phone}`}
+                    className="transition-colors hover:text-gold"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                </li>
+              )}
+              {siteConfig.contact.mapsUrl && (
+                <li>
+                  <a
+                    href={siteConfig.contact.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gold underline-offset-4 hover:underline"
+                  >
+                    {s.visit.directions} →
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

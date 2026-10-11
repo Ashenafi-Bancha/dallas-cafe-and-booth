@@ -12,7 +12,11 @@ export function LocationSection() {
   const details = [
     {
       title: s.visit.where,
-      lines: [t(siteConfig.location), contact.address ? t(contact.address) : s.visit.addressSoon],
+      // With a map pin in place, a missing street address needs no "coming soon" note
+      lines: [
+        t(siteConfig.location),
+        ...(contact.address ? [t(contact.address)] : contact.mapsUrl ? [] : [s.visit.addressSoon]),
+      ],
     },
     {
       title: s.visit.hours,
@@ -61,7 +65,7 @@ export function LocationSection() {
               <Reveal delay={0.3} className="mt-8 flex flex-wrap gap-3">
                 {contact.phone && (
                   <a
-                    href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`}
+                    href={`tel:${contact.phoneDial ?? contact.phone}`}
                     className="inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-cream"
                   >
                     <Phone className="h-4 w-4" />
@@ -90,7 +94,9 @@ export function LocationSection() {
                 src={contact.mapsEmbedUrl}
                 title={s.visit.mapTitle}
                 loading="lazy"
-                className="h-[320px] w-full border-0 grayscale-[35%] md:h-[460px]"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[360px] w-full border border-cream/15 grayscale-[25%] md:h-[460px]"
               />
             ) : (
               <div className="flex h-[320px] flex-col border border-cream/15 bg-espresso md:h-[460px]">
