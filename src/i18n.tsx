@@ -16,9 +16,11 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+// Every visit starts in English. A switch to Amharic is kept only for that visit
+// (while the tab stays open), so the next visit opens in English again.
 function readStoredLang(): Lang {
   try {
-    return localStorage.getItem(STORAGE_KEY) === 'am' ? 'am' : 'en';
+    return sessionStorage.getItem(STORAGE_KEY) === 'am' ? 'am' : 'en';
   } catch {
     return 'en';
   }
@@ -30,9 +32,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = lang;
     try {
-      localStorage.setItem(STORAGE_KEY, lang);
+      sessionStorage.setItem(STORAGE_KEY, lang);
+      // Earlier versions remembered the choice permanently; clear that so returning visitors start in English too
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
-      // Storage can be blocked; the choice then lasts for this visit only
+      // Storage can be blocked; the choice then lasts until the page is reloaded
     }
   }, [lang]);
 
