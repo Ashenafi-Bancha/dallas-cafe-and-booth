@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { siteConfig } from '../data/config';
+import { useLang } from '../i18n';
 
 type Network = keyof typeof siteConfig.socials;
 
@@ -65,30 +66,48 @@ const networks: { id: Network; label: string; className?: string; style?: React.
   },
 ];
 
-// Only networks that have a link in config are shown.
-const activeSocials = networks.filter(({ id }) => siteConfig.socials[id] !== null);
+// Networks with a link are shown as links; those listed as placeholders show the icon without one.
+const shownSocials = networks.filter(
+  ({ id }) => siteConfig.socials[id] !== null || siteConfig.socialPlaceholders.includes(id)
+);
+
+const badge = 'flex h-11 w-11 items-center justify-center overflow-hidden rounded-full';
 
 export function SocialLinks({ className }: { className?: string }) {
+  const { s } = useLang();
+
   return (
     <ul className={clsx('flex items-center gap-3', className)}>
-      {activeSocials.map(({ id, label, className: brand, style, icon }) => (
-        <li key={id}>
-          <a
-            href={siteConfig.socials[id]!}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={label}
-            title={label}
-            style={style}
-            className={clsx(
-              'flex h-11 w-11 items-center justify-center overflow-hidden rounded-full transition-transform duration-300 hover:-translate-y-0.5 hover:scale-105',
-              brand
+      {shownSocials.map(({ id, label, className: brand, style, icon }) => {
+        const url = siteConfig.socials[id];
+        return (
+          <li key={id}>
+            {url ? (
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                title={label}
+                style={style}
+                className={clsx(badge, 'transition-transform duration-300 hover:-translate-y-0.5 hover:scale-105', brand)}
+              >
+                {icon}
+              </a>
+            ) : (
+              <span
+                role="img"
+                aria-label={`${label} – ${s.social.soon}`}
+                title={`${label} – ${s.social.soon}`}
+                style={style}
+                className={clsx(badge, 'cursor-default', brand)}
+              >
+                {icon}
+              </span>
             )}
-          >
-            {icon}
-          </a>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   );
 }

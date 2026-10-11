@@ -72,6 +72,8 @@ type SiteConfig = {
   // The Amharic hours use the Ethiopian clock (6:00 AM is 12:00 in the morning).
   openingHours: { weekdays: Localized; weekends: Localized };
   socials: { instagram: string | null; tiktok: string | null; facebook: string | null; telegram: string | null };
+  // Networks to show as a non-clickable placeholder until their link is added above
+  socialPlaceholders: (keyof SiteConfig['socials'])[];
   menuIsSample: boolean;
   menu: MenuCategory[];
 };
@@ -101,6 +103,7 @@ export const siteConfig: SiteConfig = {
     facebook: null,
     telegram: null,
   },
+  socialPlaceholders: ["facebook"],
   menuIsSample: true,
   menu: [
     {

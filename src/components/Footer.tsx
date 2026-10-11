@@ -28,8 +28,10 @@ export function Footer() {
               className="mb-8 w-28 rounded-xl bg-[#fefefe] p-2.5 md:w-32"
             />
             <p className="max-w-xs font-display text-2xl font-light leading-snug md:text-3xl">{s.footer.tagline}</p>
-            <h4 className="eyebrow mt-10 mb-4 text-sand">{s.social.followUs}</h4>
-            <SocialLinks />
+            <div className="hidden md:block">
+              <h4 className="eyebrow mt-10 mb-4 text-sand">{s.social.followUs}</h4>
+              <SocialLinks />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -64,6 +66,12 @@ export function Footer() {
       >
         {t(siteConfig.shortName)}
       </p>
+
+      {/* On phones the social links close the page */}
+      <div className="wrap flex flex-col items-center pt-4 md:hidden">
+        <h4 className="eyebrow mb-4 text-sand">{s.social.followUs}</h4>
+        <SocialLinks />
+      </div>
 
       <div className="wrap flex flex-col items-center justify-between gap-2 py-6 text-xs text-cream/45 sm:flex-row">
         <p>&copy; {new Date().getFullYear()} {t(siteConfig.name)}. {s.footer.rights}</p>
