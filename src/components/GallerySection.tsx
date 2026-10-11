@@ -5,7 +5,7 @@ import { Photo } from './Photo';
 import { Reveal } from './Reveal';
 
 // Captions and alt text come from strings.ts, in this same order.
-const gallery: PhotoName[] = ['cafe_day', 'coffee_ceremony', 'macchiato', 'snacks', 'avocado_juice'];
+const gallery: PhotoName[] = ['cafe_day', 'coffee_ceremony', 'macchiato', 'pizza_special', 'avocado_juice'];
 
 export function GallerySection() {
   const { s } = useLang();

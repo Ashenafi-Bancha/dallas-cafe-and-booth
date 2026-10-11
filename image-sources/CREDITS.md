@@ -48,4 +48,4 @@ Attribution is not required but is recorded here.
 | `water_half.jpg` | Water ½ L | [charlesdeluvio](https://unsplash.com/@charlesdeluvio) | https://images.unsplash.com/photo-1616118132534-381148898bb4 |
 
 The remaining photos (the cafe, play area, logo, `coffee_ceremony`, `ethiopian_coffee`, `macchiato`,
-`snacks`, `burger`, `avocado_juice`) were supplied by the site owner.
+`burger`, `avocado_juice`) were supplied by the site owner.
