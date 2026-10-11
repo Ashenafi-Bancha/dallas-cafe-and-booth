@@ -35,7 +35,7 @@ export function AboutSection() {
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/70 md:text-lg">{s.about.body}</p>
             <Link
-              to="/menu"
+              to="/#menu"
               className="group mt-10 inline-flex items-center gap-3 border-b border-gold pb-1.5 text-sm font-medium text-cream transition-colors hover:text-gold"
             >
               {s.hero.primaryCta}

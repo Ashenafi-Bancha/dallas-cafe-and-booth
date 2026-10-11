@@ -9,7 +9,7 @@ import { GalleryPage, HomePage, KidsPage, MenuPage, VisitPage } from './pages';
 // Each page opens at the top, except links to a section (/#about), which scroll to it.
 // Arriving straight at such a link jumps there at once; clicking one within the site glides.
 function ScrollManager() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ function ScrollManager() {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
     isFirstLoad.current = false;
-  }, [pathname, hash]);
+    // `key` changes on every navigation, so clicking the link for the section already open still scrolls to it
+  }, [pathname, hash, key]);
 
   return null;
 }

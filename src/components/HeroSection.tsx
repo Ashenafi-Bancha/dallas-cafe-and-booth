@@ -10,11 +10,11 @@ export function HeroSection() {
   const { s } = useLang();
 
   const quickLinks = [
-    { name: s.nav.menu, href: '/menu', icon: UtensilsCrossed },
-    { name: s.nav.play, href: '/kids', icon: Baby },
-    { name: s.nav.gallery, href: '/gallery', icon: Images },
+    { name: s.nav.menu, href: '/#menu', icon: UtensilsCrossed },
+    { name: s.nav.play, href: '/#play', icon: Baby },
+    { name: s.nav.gallery, href: '/#gallery', icon: Images },
     { name: s.nav.story, href: '/#about', icon: BookOpen },
-    { name: s.nav.visit, href: '/visit', icon: MapPin },
+    { name: s.nav.visit, href: '/#contact', icon: MapPin },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -100,7 +100,7 @@ export function HeroSection() {
                   className="absolute left-1/2 top-1/2 aspect-square w-[160%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_0deg,#E11D2A,#FFD21F,#E11D2A,#FFD21F,#E11D2A)] motion-reduce:hidden sm:hidden"
                 />
                 <Link
-                  to="/menu"
+                  to="/#menu"
                   className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-3 text-[15px] font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
                 >
                   {s.hero.primaryCta}
@@ -108,7 +108,7 @@ export function HeroSection() {
                 </Link>
               </span>
               <Link
-                to="/visit"
+                to="/#contact"
                 className="border-b border-cream/40 pb-1 text-sm font-medium text-cream transition-colors hover:border-gold hover:text-gold"
               >
                 {s.hero.secondaryCta}

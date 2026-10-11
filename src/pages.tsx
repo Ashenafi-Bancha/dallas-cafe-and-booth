@@ -1,20 +1,24 @@
 import { useLang, usePageTitle } from './i18n';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
-import { ExploreSection } from './components/ExploreSection';
 import { FeaturedMenu } from './components/FeaturedMenu';
 import { PlaySection } from './components/PlaySection';
 import { GallerySection } from './components/GallerySection';
 import { LocationSection } from './components/LocationSection';
 import { Reveal } from './components/Reveal';
 
+// The landing page carries every section. The pages below show one section each,
+// for links that should open straight onto it, such as the table card's QR code.
 export function HomePage() {
   usePageTitle();
   return (
     <>
       <HeroSection />
       <AboutSection />
-      <ExploreSection />
+      <FeaturedMenu />
+      <PlaySection />
+      <GallerySection />
+      <LocationSection />
     </>
   );
 }

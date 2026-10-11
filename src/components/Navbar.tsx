@@ -97,11 +97,12 @@ export function Navbar() {
   const isHome = useLocation().pathname === '/';
 
   const navLinks = [
+    { name: s.nav.home, href: '/#home' },
     { name: s.nav.story, href: '/#about' },
-    { name: s.nav.menu, href: '/menu' },
-    { name: s.nav.play, href: '/kids' },
-    { name: s.nav.gallery, href: '/gallery' },
-    { name: s.nav.visit, href: '/visit' },
+    { name: s.nav.menu, href: '/#menu' },
+    { name: s.nav.play, href: '/#play' },
+    { name: s.nav.gallery, href: '/#gallery' },
+    { name: s.nav.visit, href: '/#contact' },
   ];
 
   useEffect(() => {
@@ -158,7 +159,7 @@ export function Navbar() {
           </ul>
           <LanguageSwitch />
           <Link
-            to="/menu"
+            to="/#menu"
             className="hidden rounded-full border border-gold/60 px-5 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-ink lg:block"
           >
             {s.nav.cta}
@@ -189,7 +190,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed inset-0 z-40 flex flex-col bg-ink px-5 pt-28 pb-8"
+            className="md:hidden fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink px-5 pt-24 pb-8"
           >
             <ul className="flex flex-col">
               {navLinks.map((link, i) => (
@@ -202,7 +203,7 @@ export function Navbar() {
                 >
                   <Link
                     to={link.href}
-                    className="flex items-baseline justify-between py-4 font-display text-4xl text-cream"
+                    className="flex items-baseline justify-between py-3 font-display text-3xl text-cream"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -211,7 +212,7 @@ export function Navbar() {
                 </motion.li>
               ))}
             </ul>
-            <div className="mt-auto">
+            <div className="mt-auto pt-8">
               <div className="tibeb mb-6 opacity-70" />
               <p className="eyebrow text-sand">{t(siteConfig.location)}</p>
               <p className="mt-2 text-sm text-cream/70">{s.visit.weekdays} {t(siteConfig.openingHours.weekdays)}</p>

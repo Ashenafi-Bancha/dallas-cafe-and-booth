@@ -9,10 +9,10 @@ export function Footer() {
   const quickLinks = [
     { name: s.nav.home, href: '/' },
     { name: s.nav.story, href: '/#about' },
-    { name: s.nav.menu, href: '/menu' },
-    { name: s.nav.play, href: '/kids' },
-    { name: s.nav.gallery, href: '/gallery' },
-    { name: s.nav.visit, href: '/visit' },
+    { name: s.nav.menu, href: '/#menu' },
+    { name: s.nav.play, href: '/#play' },
+    { name: s.nav.gallery, href: '/#gallery' },
+    { name: s.nav.visit, href: '/#contact' },
   ];
 
   return (
