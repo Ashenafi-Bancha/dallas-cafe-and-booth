@@ -41,8 +41,8 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow: full-bleed on mobile, right half on desktop */}
-        <div className="absolute inset-0 -z-10 overflow-hidden lg:left-[50%]">
+        {/* Photo slideshow: a band across the top on phones, the right half on desktop */}
+        <div className="absolute inset-x-0 top-0 -z-10 h-[44svh] overflow-hidden lg:inset-y-0 lg:left-[50%] lg:h-auto">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -59,7 +59,7 @@ export function HeroSection() {
                   key={photo}
                   initial={false}
                   animate={{ x: isCurrent ? '0%' : isLeaving ? '-100%' : '100%' }}
-                  transition={{ duration: isCurrent || isLeaving ? 1.1 : 0, ease: easeOut }}
+                  transition={{ duration: isCurrent || isLeaving ? 1.4 : 0, ease: [0.65, 0, 0.35, 1] }}
                   aria-hidden={!isCurrent}
                   className="absolute inset-0"
                 >
@@ -74,12 +74,13 @@ export function HeroSection() {
               );
             })}
           </motion.div>
-          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink lg:via-ink/35 lg:via-30% lg:to-transparent" />
+          {/* Fades the photo into the page: downwards on phones, towards the text on desktop */}
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-8% via-ink/45 via-40% to-transparent lg:bg-linear-to-r lg:from-ink lg:from-0% lg:via-ink/35 lg:via-30% lg:to-transparent" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
         {/* Slide picker */}
-        <div className="absolute right-3 top-24 z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
+        <div className="absolute right-3 top-[calc(36svh-2.4rem)] z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
           {slides.map(({ photo }, i) => (
             <button
               key={photo}
@@ -98,7 +99,7 @@ export function HeroSection() {
           ))}
         </div>
 
-        <div className="wrap flex flex-1 flex-col justify-end pt-32 pb-10 lg:justify-center lg:pb-12">
+        <div className="wrap flex flex-1 flex-col pt-[36svh] pb-6 lg:justify-center lg:pt-32 lg:pb-12">
           <div className="lg:max-w-[46%]">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -123,7 +124,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.7, ease: easeOut }}
-              className="mt-6 max-w-md text-base leading-relaxed text-cream/75 md:mt-8 md:text-lg"
+              className="mt-5 max-w-md text-base leading-relaxed text-cream/75 md:mt-8 md:text-lg"
             >
               {s.hero.intro}
             </motion.p>
@@ -132,7 +133,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.9, ease: easeOut }}
-              className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:gap-8 md:mt-10"
+              className="mt-7 flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:mt-10"
             >
               {/* On phones the button spans the screen, with a light running round its border */}
               <span className="relative block w-full overflow-hidden rounded-2xl bg-ink/70 p-[2px] sm:w-auto sm:overflow-visible sm:rounded-full sm:bg-transparent sm:p-0">
@@ -162,7 +163,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3 }}
-          className="wrap pb-8"
+          className="wrap pb-6 lg:pb-8"
         >
           {/* Phones: an animated scroll cue. Desktop: opening details. */}
           <a href="#about" className="flex flex-col items-center gap-3 text-cream/80 lg:hidden">
