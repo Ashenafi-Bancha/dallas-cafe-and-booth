@@ -9,12 +9,9 @@
   --color-sand: #B9A88F;
   --color-gold: #C9A45C;
   --color-clay: #B5532C;
-  --color-sign: #D4242F;
-  --color-logo-blue: #055499;
 
   --font-sans: "DM Sans", "Noto Sans Ethiopic", system-ui, -apple-system, sans-serif;
   --font-display: "Fraunces", "Noto Serif Ethiopic", Georgia, "Times New Roman", serif;
-  --font-accent: "Playfair Display", "Noto Serif Ethiopic", Georgia, serif;
 
   --animate-marquee: marquee 45s linear infinite;
 
@@ -82,36 +79,6 @@ section[id] {
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-  }
-
-  /* Signboard lettering: the cafe sign's red with a cream edge, so it reads over any photo */
-  .sign-text {
-    color: var(--color-sign);
-    text-shadow:
-      2px 0 0 #fffdf8,
-      -2px 0 0 #fffdf8,
-      0 2px 0 #fffdf8,
-      0 -2px 0 #fffdf8,
-      1.5px 1.5px 0 #fffdf8,
-      -1.5px 1.5px 0 #fffdf8,
-      1.5px -1.5px 0 #fffdf8,
-      -1.5px -1.5px 0 #fffdf8,
-      0 4px 22px rgb(18 14 11 / 0.55);
-  }
-
-  /* The tagline under it: the logo's blue with a finer cream edge */
-  .tagline-text {
-    color: var(--color-logo-blue);
-    text-shadow:
-      1.25px 0 0 #fffdf8,
-      -1.25px 0 0 #fffdf8,
-      0 1.25px 0 #fffdf8,
-      0 -1.25px 0 #fffdf8,
-      1px 1px 0 #fffdf8,
-      -1px 1px 0 #fffdf8,
-      1px -1px 0 #fffdf8,
-      -1px -1px 0 #fffdf8,
-      0 3px 18px rgb(18 14 11 / 0.5);
   }
 
   /* Woven-border strip, after the tibeb edging on Ethiopian dress */

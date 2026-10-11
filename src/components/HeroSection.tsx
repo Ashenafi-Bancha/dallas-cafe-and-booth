@@ -91,7 +91,7 @@ export function HeroSection() {
             })}
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink from-15% via-ink/65 via-50% to-ink/5 to-80% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-15% via-ink/75 via-55% to-ink/35 to-100% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
           <div className="absolute inset-x-0 bottom-0 hidden h-44 bg-linear-to-t from-ink/75 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
@@ -125,7 +125,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: easeOut }}
-              className="eyebrow mb-4 flex items-center gap-3 font-semibold text-white [text-shadow:0_1px_12px_rgb(18_14_11/0.95)] md:mb-7"
+              className="eyebrow mb-4 flex items-center gap-3 text-gold [text-shadow:0_1px_12px_rgb(18_14_11/0.95)] md:mb-7"
             >
               <span className="h-px w-8 bg-gold" />
               {s.hero.eyebrow}
@@ -135,17 +135,16 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[2.6rem] sign-text font-semibold leading-[1.08] tracking-tight text-balance sm:text-6xl xl:text-[5rem]"
+              className="font-display text-[2.75rem] font-light leading-[1.04] tracking-tight text-balance text-cream [text-shadow:0_2px_24px_rgb(18_14_11/0.7)] sm:text-6xl xl:text-[5.25rem]"
             >
-              {s.hero.heading.before} <em>{s.hero.heading.accent}</em> {s.hero.heading.after}
+              {s.hero.heading.before} <em className="text-gold">{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
 
-            {/* Tagline in the logo's blue */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.6, ease: easeOut }}
-              className="tagline-text mt-3 font-accent text-[1.7rem] font-bold italic leading-tight tracking-wide sm:text-4xl md:mt-4 xl:text-5xl"
+              className="mt-4 font-display text-xl font-light tracking-[0.08em] text-cream/90 [text-shadow:0_1px_16px_rgb(18_14_11/0.8)] sm:text-2xl md:mt-5"
             >
               {s.hero.tagline}
             </motion.p>

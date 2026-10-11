@@ -136,12 +136,8 @@ export function Navbar() {
             height={192}
             className="h-10 w-10 shrink-0 rounded-full bg-[#fefefe] object-contain p-1 md:h-12 md:w-12"
           />
-          {/* Name and descriptor on one line; the descriptor is yellow on phones, gold from tablet up */}
-          <span className="flex items-baseline gap-1.5 whitespace-nowrap md:gap-2.5">
-            <span className="font-display text-[clamp(0.85rem,4.6vw,1.2rem)] leading-none text-cream md:text-[1.7rem]">{t(siteConfig.shortName)}</span>
-            <span className="text-[clamp(8px,2.5vw,10px)] font-semibold uppercase leading-none tracking-[0.1em] text-[#FFD21F] md:text-[11px] md:font-medium md:tracking-[0.28em] md:text-gold [html[lang=am]_&]:text-xs [html[lang=am]_&]:tracking-normal">
-              {t(siteConfig.descriptor)}
-            </span>
+          <span className="whitespace-nowrap font-sans text-[clamp(0.85rem,4.6vw,1.1rem)] font-bold uppercase leading-none tracking-[0.14em] text-cream md:text-xl">
+            {t(siteConfig.shortName)}
           </span>
         </a>
 

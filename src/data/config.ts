@@ -77,7 +77,6 @@ export type MenuCategory = {
 type SiteConfig = {
   name: Localized;
   shortName: Localized;
-  descriptor: Localized;
   city: Localized;
   location: Localized;
   currency: Localized;
@@ -107,7 +106,6 @@ export const siteConfig: SiteConfig = {
   // Spelled as on the signboard and logo
   name: { en: "Dallas Café & Booth", am: "ዳላስ ካፌ እና ቡዝ" },
   shortName: { en: "Dallas Café", am: "ዳላስ ካፌ" },
-  descriptor: { en: "& Booth", am: "እና ቡዝ" },
   city: { en: "Wolaita Sodo", am: "ወላይታ ሶዶ" },
   location: { en: "Wolaita Sodo, South Ethiopia, Ethiopia", am: "ወላይታ ሶዶ፣ ደቡብ ኢትዮጵያ፣ ኢትዮጵያ" },
   currency: { en: "ETB", am: "ብር" },
