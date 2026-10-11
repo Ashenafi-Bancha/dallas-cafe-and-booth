@@ -41,8 +41,8 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* Photo slideshow: a band across the top on phones, the right half on desktop */}
-        <div className="absolute inset-x-0 top-0 -z-10 h-[44svh] overflow-hidden lg:inset-y-0 lg:left-[50%] lg:h-auto">
+        {/* Photo slideshow: full-bleed background on phones, the right half on desktop */}
+        <div className="absolute inset-0 -z-10 overflow-hidden lg:left-[50%]">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -74,13 +74,13 @@ export function HeroSection() {
               );
             })}
           </motion.div>
-          {/* Fades the photo into the page: downwards on phones, towards the text on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink from-8% via-ink/45 via-40% to-transparent lg:bg-linear-to-r lg:from-ink lg:from-0% lg:via-ink/35 lg:via-30% lg:to-transparent" />
+          {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
+          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/25 lg:bg-linear-to-r lg:from-ink lg:via-ink/35 lg:via-30% lg:to-transparent" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
         {/* Slide picker */}
-        <div className="absolute right-3 top-[calc(36svh-2.4rem)] z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
+        <div className="absolute right-3 top-24 z-10 flex items-center md:right-8 lg:top-auto lg:bottom-7">
           {slides.map(({ photo }, i) => (
             <button
               key={photo}
@@ -99,7 +99,7 @@ export function HeroSection() {
           ))}
         </div>
 
-        <div className="wrap flex flex-1 flex-col pt-[36svh] pb-6 lg:justify-center lg:pt-32 lg:pb-12">
+        <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">
           <div className="lg:max-w-[46%]">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -143,7 +143,7 @@ export function HeroSection() {
                 />
                 <a
                   href="#menu"
-                  className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-4 text-base font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
+                  className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-3 text-[15px] font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
                 >
                   {s.hero.primaryCta}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
