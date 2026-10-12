@@ -9,7 +9,7 @@ type Strings = {
   hero: {
     eyebrow: string;
     heading: Heading;
-    tagline: string;
+    tagline: Heading;
     intro: string;
     primaryCta: string;
     secondaryCta: string;
@@ -83,8 +83,8 @@ export const strings: Record<Lang, Strings> = {
     },
     hero: {
       eyebrow: 'Wolaita Sodo, Ethiopia',
-      heading: { before: 'A table for you.', accent: 'A playground for kids.' },
-      tagline: 'Eat. Sip. Stay. Play.',
+      heading: { before: 'Welcome to', accent: 'Dallas Café' },
+      tagline: { before: 'Your Favorite Place to', accent: 'Eat, Sip, Snack & Smile.' },
       intro: 'Pizza, burgers, fresh juice and coffee, with a garden where the children can play, at Dallas Café & Booth in the heart of Wolaita Sodo.',
       primaryCta: 'Explore the menu',
       secondaryCta: 'Find the café',
@@ -193,8 +193,8 @@ export const strings: Record<Lang, Strings> = {
     },
     hero: {
       eyebrow: 'ወላይታ ሶዶ፣ ኢትዮጵያ',
-      heading: { before: 'ማዕድ ለእርስዎ።', accent: 'መጫወቻ ለልጆችዎ።' },
-      tagline: 'ይብሉ። ይጠጡ። ይቆዩ። ይጫወቱ።',
+      heading: { before: 'እንኳን ወደ', accent: 'ዳላስ ካፌ', after: 'በደህና መጡ' },
+      tagline: { before: 'የሚወዱት ስፍራ፤', accent: 'ለመብላት፣ ለመጠጣት፣ ለመክሰስ እና ለመሳቅ።' },
       intro: 'ፒዛ፣ በርገር፣ ትኩስ ጁስ እና ቡና፤ ልጆች የሚጫወቱበት የአትክልት ስፍራ ባለው፣ በወላይታ ሶዶ እምብርት በሚገኘው ዳላስ ካፌ እና ቡዝ።',
       primaryCta: 'ሜኑውን ይመልከቱ',
       secondaryCta: 'ካፌውን ያግኙ',

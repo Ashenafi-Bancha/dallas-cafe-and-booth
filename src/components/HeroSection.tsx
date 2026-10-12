@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Baby, BookOpen, Images, MapPin, UtensilsCrossed } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n';
+import { withPlainAmpersand } from './Ampersand';
 import { Photo } from './Photo';
 import { easeOut } from './Reveal';
 
@@ -73,9 +74,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.6, ease: easeOut }}
-              className="mt-4 font-display text-xl font-light tracking-[0.08em] text-cream/90 [text-shadow:0_1px_16px_rgb(18_14_11/0.8)] sm:text-2xl md:mt-5"
+              className="mt-3 font-display text-[1.6rem] italic leading-snug text-cream [text-shadow:0_1px_3px_rgb(18_14_11/0.9),0_2px_18px_rgb(18_14_11/0.85)] sm:text-4xl md:mt-4 xl:text-[2.75rem]"
             >
-              {s.hero.tagline}
+              {s.hero.tagline.before} <span className="text-gold">{withPlainAmpersand(s.hero.tagline.accent)}</span>
             </motion.p>
 
             <motion.p
