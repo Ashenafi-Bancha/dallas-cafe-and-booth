@@ -2,11 +2,13 @@
 //   table-card-a5.html  - a single A5 card for an acrylic menu stand
 //   table-cards-a4-2up.html - two of the same card on one A4 sheet, to cut apart
 // Run with: npm run table-card
-// Change MENU_URL if the site moves to its own domain, then reprint.
+// The QR code opens MENU_URL. It stays on the Vercel address, which keeps working after a custom
+// domain is attached, so cards printed now never go stale. SITE_LABEL is only the text printed on the card.
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import QRCode from 'qrcode';
 
 const MENU_URL = 'https://dallas-cafe-and-booth.vercel.app/menu';
+const SITE_LABEL = 'dallascafeandbooth.com';
 const OUT = 'print';
 
 const INK = '#120E0B';
@@ -66,7 +68,10 @@ const styles = `
   .steps i { width: 1.4mm; height: 1.4mm; background: ${CLAY}; transform: rotate(45deg); }
   .foot { margin-top: auto; width: 100%; }
   .tag { font-family: "EB Garamond", serif; font-style: italic; font-size: 15pt; color: ${GOLD}; margin-bottom: 3mm; }
-  .contact { margin-top: 3mm; font-size: 7pt; letter-spacing: 0.14em; color: ${CREAM}; opacity: 0.7; }
+  .tag b { font-family: "DM Sans", sans-serif; font-style: normal; font-weight: 400; font-size: 12pt; }
+  .thanks { margin-top: 3.5mm; font-family: "EB Garamond", "Noto Serif Ethiopic", serif; font-style: italic; font-weight: 500; font-size: 14pt; color: ${CREAM}; }
+  .thanks span { font-family: "Noto Serif Ethiopic", serif; font-style: normal; font-size: 9pt; opacity: 0.8; margin-left: 2mm; }
+  .contact { margin-top: 2.5mm; font-size: 7pt; letter-spacing: 0.14em; color: ${CREAM}; opacity: 0.7; }
 `;
 
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,9 +89,10 @@ function card(qr, logoDataUri) {
     <div class="qr">${qr}</div>
     <p class="steps">Open camera <i></i> Point at the code <i></i> Tap the link</p>
     <div class="foot">
-      <p class="tag">Eat. Sip. Stay. Play.</p>
+      <p class="tag">Eat, Sip, Snack <b>&amp;</b> Smile.</p>
       <div class="tibeb"></div>
-      <p class="contact">0965 55 15 42 &nbsp;·&nbsp; dallas-cafe-and-booth.vercel.app</p>
+      <p class="thanks">Thank you for coming. <span>ስለመጡ እናመሰግናለን።</span></p>
+      <p class="contact">0965 55 15 42 &nbsp;·&nbsp; ${SITE_LABEL}</p>
     </div>
   </div>`;
 }
