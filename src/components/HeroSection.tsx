@@ -25,8 +25,9 @@ export function HeroSection() {
   return (
     <>
       <section ref={sectionRef} id="home" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink text-cream">
-        {/* The cafe at night, filling the hero edge to edge behind the text */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* The cafe at night: a band across the top on phones that fades into the text below,
+            and the full background on desktop */}
+        <div className="absolute inset-x-0 top-0 -z-10 h-[36svh] overflow-hidden lg:inset-0 lg:h-auto">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -40,22 +41,22 @@ export function HeroSection() {
               alt={s.hero.photoAlt}
               sizes="100vw"
               eager
-              className="h-full w-full object-cover lg:object-[50%_62%]"
+              className="h-full w-full object-cover object-[50%_58%] lg:object-[50%_62%]"
             />
           </motion.div>
           {/* Darkens the photo behind the text: from the bottom on phones, from the left on desktop */}
-          <div className="absolute inset-0 bg-linear-to-t from-ink from-15% via-ink/75 via-55% to-ink/35 to-100% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink from-2% via-ink/30 via-40% to-transparent to-75% lg:bg-linear-to-r lg:from-ink/95 lg:from-0% lg:via-ink/70 lg:via-40% lg:to-transparent lg:to-80%" />
           <div className="absolute inset-x-0 bottom-0 hidden h-44 bg-linear-to-t from-ink/75 to-transparent lg:block" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/70 to-transparent" />
         </div>
 
-        <div className="wrap flex flex-1 flex-col justify-end pt-28 pb-6 lg:justify-center lg:pt-32 lg:pb-12">
+        <div className="wrap flex flex-1 flex-col pt-[calc(36svh-1.25rem)] pb-4 lg:justify-center lg:pt-32 lg:pb-12">
           <div className="lg:max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: easeOut }}
-              className="eyebrow mb-4 flex items-center gap-3 text-gold [text-shadow:0_1px_12px_rgb(18_14_11/0.95)] md:mb-7"
+              className="eyebrow mb-2.5 flex items-center gap-3 text-gold [text-shadow:0_1px_12px_rgb(18_14_11/0.95)] md:mb-7"
             >
               <span className="h-px w-8 bg-gold" />
               {s.hero.eyebrow}
@@ -65,7 +66,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: easeOut }}
-              className="font-display text-[2.75rem] font-light leading-[1.04] tracking-tight text-balance text-cream [text-shadow:0_2px_24px_rgb(18_14_11/0.7)] sm:text-6xl xl:text-[5.25rem]"
+              className="font-display text-[2rem] font-light leading-[1.06] tracking-tight text-balance text-cream [text-shadow:0_2px_24px_rgb(18_14_11/0.7)] sm:text-6xl xl:text-[5.25rem]"
             >
               {s.hero.heading.before} <em className="text-gold">{s.hero.heading.accent}</em> {s.hero.heading.after}
             </motion.h1>
@@ -74,7 +75,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.6, ease: easeOut }}
-              className="mt-3 font-display text-[1.6rem] italic leading-snug text-cream [text-shadow:0_1px_3px_rgb(18_14_11/0.9),0_2px_18px_rgb(18_14_11/0.85)] sm:text-4xl md:mt-4 xl:text-[2.75rem]"
+              className="mt-2 font-display text-[1.2rem] italic leading-snug text-cream [text-shadow:0_1px_3px_rgb(18_14_11/0.9),0_2px_18px_rgb(18_14_11/0.85)] sm:text-4xl md:mt-4 xl:text-[2.75rem]"
             >
               {s.hero.tagline.before} <span className="text-gold">{withPlainAmpersand(s.hero.tagline.accent)}</span>
             </motion.p>
@@ -83,7 +84,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.7, ease: easeOut }}
-              className="mt-5 max-w-md text-base leading-relaxed text-cream/75 md:mt-8 md:text-lg lg:text-cream/90 lg:[text-shadow:0_1px_16px_rgb(18_14_11/0.7)]"
+              className="mt-3 max-w-md text-sm leading-relaxed text-cream/75 sm:text-base md:mt-8 md:text-lg lg:text-cream/90 lg:[text-shadow:0_1px_16px_rgb(18_14_11/0.7)]"
             >
               {s.hero.intro}
             </motion.p>
@@ -92,7 +93,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.9, ease: easeOut }}
-              className="mt-7 flex flex-col items-center gap-4 sm:flex-row sm:gap-8 md:mt-10"
+              className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:gap-8 md:mt-10"
             >
               {/* On phones the button spans the screen, with red and yellow turning round its border */}
               <span className="relative block w-full overflow-hidden rounded-2xl bg-ink/70 p-[2px] sm:w-auto sm:overflow-visible sm:rounded-full sm:bg-transparent sm:p-0">
@@ -102,7 +103,7 @@ export function HeroSection() {
                 />
                 <Link
                   to="/#menu"
-                  className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-3 text-[15px] font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
+                  className="group relative flex w-full items-center justify-center gap-3 rounded-[14px] bg-gold px-7 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-cream sm:inline-flex sm:w-auto sm:rounded-full sm:py-3.5 sm:text-sm"
                 >
                   {s.hero.primaryCta}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -122,18 +123,18 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3 }}
-          className="wrap pb-6 lg:pb-8"
+          className="wrap pb-5 lg:pb-8"
         >
           {/* Phones: an animated scroll cue. Desktop: opening details. */}
-          <Link to="/#about" className="flex flex-col items-center gap-3 text-cream/80 lg:hidden">
-            <span className="flex h-10 w-6 justify-center rounded-full border border-cream/50 pt-2">
+          <Link to="/#about" className="flex flex-col items-center gap-2 text-cream/80 lg:hidden">
+            <span className="flex h-8 w-5 justify-center rounded-full border border-cream/50 pt-1.5">
               <span className="h-2 w-1 animate-scroll-cue rounded-full bg-gold motion-reduce:animate-none" />
             </span>
             <span className="eyebrow">{s.hero.scrollExplore}</span>
           </Link>
 
           {/* Phones: shortcuts to each section */}
-          <nav aria-label={s.footer.explore} className="mt-6 lg:hidden">
+          <nav aria-label={s.footer.explore} className="mt-5 lg:hidden">
             <ul className="grid grid-cols-5 gap-2">
               {quickLinks.map(({ name, href, icon: Icon }) => (
                 <li key={href}>
