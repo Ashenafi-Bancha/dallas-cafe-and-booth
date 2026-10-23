@@ -1,6 +1,7 @@
 import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '../data/config';
 import { useLang } from '../i18n';
+import { GoogleReviewButton } from './GoogleReviewButton';
 import { Reveal } from './Reveal';
 
 const { contact, openingHours } = siteConfig;
@@ -76,6 +77,7 @@ export function LocationSection() {
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 )}
+                <GoogleReviewButton />
               </Reveal>
             )}
           </div>

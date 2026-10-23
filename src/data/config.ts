@@ -102,6 +102,9 @@ type SiteConfig = {
     whatsapp: string | null;
     mapsUrl: string | null;
     mapsEmbedUrl: string | null;
+    // Where the "Rate us on Google" buttons go. Replace with the review link from the Google Business
+    // Profile (Ask for reviews > Share review form), which opens the review box directly.
+    googleReviewUrl: string;
   };
   // The Amharic hours use the Ethiopian clock (6:00 AM is 12:00 in the morning).
   openingHours: { weekdays: Localized; weekends: Localized };
@@ -130,6 +133,7 @@ export const siteConfig: SiteConfig = {
     // Pin at 6.824523, 37.751629
     mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=6.824523,37.751629",
     mapsEmbedUrl: "https://www.google.com/maps?q=6.824523,37.751629&z=16&output=embed",
+    googleReviewUrl: "https://www.google.com/maps/search/?api=1&query=Dallas%20Caf%C3%A9%20%26%20Booth%20Wolaita%20Sodo",
   },
   openingHours: {
     weekdays: { en: "6:00 AM – 10:00 PM", am: "ጠዋት 12:00 – ምሽት 4:00" },

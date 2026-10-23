@@ -1,6 +1,7 @@
 import { siteConfig } from '../data/config';
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n';
+import { GoogleIcon } from './GoogleReviewButton';
 import { SocialLinks } from './SocialLinks';
 
 export function Footer() {
@@ -75,6 +76,17 @@ export function Footer() {
                   </a>
                 </li>
               )}
+              <li>
+                <a
+                  href={siteConfig.contact.googleReviewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-gold"
+                >
+                  <GoogleIcon className="h-4 w-4" />
+                  {s.visit.rate}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

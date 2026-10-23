@@ -55,6 +55,7 @@ type Strings = {
     phoneSoon: string;
     call: string;
     directions: string;
+    rate: string;
     mapSoon: string;
     mapSoonBody: string;
     mapTitle: string;
@@ -158,6 +159,7 @@ export const strings: Record<Lang, Strings> = {
       phoneSoon: 'Phone number coming soon',
       call: 'Call now',
       directions: 'Get directions',
+      rate: 'Rate us on Google',
       mapSoon: 'Map coming soon',
       mapSoonBody: 'We are confirming our exact pin in Wolaita Sodo and will add the map here.',
       mapTitle: 'Map showing Dallas Café & Booth',
@@ -266,6 +268,7 @@ export const strings: Record<Lang, Strings> = {
       phoneSoon: 'ስልክ ቁጥር በቅርቡ ይገለጻል',
       call: 'አሁኑኑ ይደውሉ',
       directions: 'አቅጣጫ ያግኙ',
+      rate: 'በGoogle ላይ ይገምግሙን',
       mapSoon: 'ካርታ በቅርቡ',
       mapSoonBody: 'በወላይታ ሶዶ ያለንበትን ትክክለኛ ቦታ እያረጋገጥን ነው፤ ካርታውን እዚህ እናክላለን።',
       mapTitle: 'ዳላስ ካፌ እና ቡዝን የሚያሳይ ካርታ',
